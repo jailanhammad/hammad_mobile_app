@@ -1,0 +1,204 @@
+/* دعم العربي */
+.vehicle-card.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.vehicle-card.rtl .category-tag {
+    left: auto;
+    right: 15px; /* التاغ يروح يمين في العربي */
+}
+
+.fav-left {
+    left: 15px;
+    right: auto;
+}
+
+.fav-right {
+    right: 15px;
+    left: auto;
+}
+
+/* تحسين شكل السهم في العربي */
+.vehicle-card.rtl .arrow-icon {
+    transform: scaleX(1); /* عشان السهم يشاور صح */
+}
+.vehicle-card {
+    background: #151515;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 10px 0; /* مسافة بسيطة بين الكروت */
+    border: 1px solid #222;
+    width: 100%; /* عشان يملأ عرض الموبايل */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image-container {
+    position: relative;
+    width: 100%;
+    height: 220px; /* ثبتي الارتفاع ده */
+}
+
+.vehicle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* دي أهم خاصية عشان الصورة متتمطش وتملأ المكان */
+}
+
+.card-info {
+    padding: 16px;
+}
+
+.vehicle-card {
+    background: #1a1a1a;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px auto; /* سنترة الكارد */
+    border: 1px solid #282828;
+    width: 100%; /* عشان يملأ الحاوية بتاعته */
+    max-width: 450px; /* أقصى عرض عشان ميكبرش زيادة في الشاشات الكبيرة */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* تأثير عند اللمس أو الماوس */
+.vehicle-card:active {
+    transform: scale(0.98);
+}
+
+.card-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: #111;
+}
+
+.vehicle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* بيخلي الصورة متناسقة */
+}
+
+.category-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #e31b23;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-info {
+    padding: 20px;
+    color: white;
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-header h3 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.year {
+    color: #888;
+    font-size: 14px;
+    margin: 5px 0 10px 0;
+}
+
+.specs {
+    color: #bbb;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid #333;
+    margin: 15px 0;
+}
+
+.price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.main-price {
+    color: #e31b23;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.installment {
+    color: #888;
+    font-size: 12px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vehicle-card {
+    animation: fadeInUp 0.5s ease forwards;
+}
+.favorite-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px; /* بيظبط مكانه في الإنجليزي */
+    background: rgba(255, 255, 255, 0.2); /* خلفية بيضاء شفافة */
+    backdrop-filter: blur(5px); /* تأثير الضباب الشيك */
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+/* لو الصفحة عربي، اقلبي مكانه لليمن */
+.rtl .favorite-btn {
+    right: auto;
+    left: 15px;
+}
+
+.favorite-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.favorite-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.favorite-btn:active svg {
+    transform: scale(1.3); /* تأثير النبضة عند الضغط */
+}
+
+.favorite-btn.active svg {
+    filter: drop-shadow(0 0 5px rgba(227, 27, 35, 0.5));
+}

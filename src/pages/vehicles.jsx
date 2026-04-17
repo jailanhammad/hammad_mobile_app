@@ -3,9 +3,10 @@ import './about.css';
 import Header from '../components/header';
 
 import Nav from '../components/nav';
+import FilterSection from '../components/filtersection';
 
 
-const About = () => {
+const Vehicles = () => {
     return ( 
         <>
         
@@ -15,6 +16,7 @@ const About = () => {
 
 <div className='all-components'>
 
+<FilterSection />
 
 </div>
  
@@ -30,4 +32,4 @@ const About = () => {
      );
 }
  
-export default About;
+export default Vehicles;

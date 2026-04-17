@@ -11,6 +11,8 @@
     box-sizing: border-box;
     border-top: 1px solid #222;
     margin: 0 auto;
+    text-decoration: none;
+
   }
   
   .nav-item {
@@ -20,6 +22,7 @@
     cursor: pointer;
     transition: 0.3s;
     flex: 1;
+    text-decoration: none;
   }
   
   .nav-icon {
@@ -32,6 +35,8 @@
     font-size: 11px;
     font-weight: 500;
     color: #888;
+    text-decoration: none;
+
   }
   
   .nav-item.active .nav-icon {
@@ -41,3 +46,18 @@
   .nav-item.active .nav-label {
     color: #e31b23;
   }
+
+
+.nav-item.active {
+  color: #e31b23 !important;
+}
+
+.nav-item.active .nav-icon img {
+  filter: invert(60%) sepia(94%) saturate(5946%) hue-rotate(352deg) brightness(91%) contrast(93%);
+}
+
+.nav-icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
