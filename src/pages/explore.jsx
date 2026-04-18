@@ -3,10 +3,10 @@ import './home.css';
 import Header from '../components/header';
 
 import Nav from '../components/nav';
-import AboutUs from '../components/aboutus';
+import ExplorePage from '../components/explorepage';
 
 
-const About = () => {
+const Explore = () => {
     return ( 
         <>
         
@@ -16,7 +16,7 @@ const About = () => {
 
 <div className='all-components'>
 
-<AboutUs />
+<ExplorePage />
 
 </div>
  
@@ -32,4 +32,4 @@ const About = () => {
      );
 }
  
-export default About;
+export default Explore;

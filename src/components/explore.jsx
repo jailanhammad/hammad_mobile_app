@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './explore.css';
 
-const Explore = ({ lang = 'en' }) => {
+const ExploreSection = ({ lang = 'en' }) => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
@@ -66,4 +66,4 @@ const Explore = ({ lang = 'en' }) => {
   );
 };
 
-export default Explore;
+export default ExploreSection;

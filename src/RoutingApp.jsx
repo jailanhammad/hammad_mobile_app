@@ -4,6 +4,8 @@ import About from "./pages/about";
 import Home from "./pages/home";
 import Vehicles from "./pages/vehicles";
 import Menu from "./pages/menu";
+import Contact from "./pages/contact";
+import Explore from './pages/explore';
 
 
 const RoutingApp = () => {
@@ -18,8 +20,10 @@ const RoutingApp = () => {
 
         <Route path="/" element={<Home />} /> 
         <Route path="/about" element={<About />} />
-        <Route path="/Vehicles" element={<Vehicles />} />
+        <Route path="/vehicles" element={<Vehicles />} />
         <Route path="/Menu" element={<Menu />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/explore" element={<Explore />} />
 
       </Routes>
     </BrowserRouter>

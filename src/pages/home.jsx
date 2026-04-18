@@ -2,10 +2,10 @@ import React from 'react';
 import './home.css';
 import Header from '../components/header';
 import Featured from '../components/featured';
-import Explore from '../components/explore';
 import Nav from '../components/nav';
 import Mostsold from '../components/mostsold';
 import Review from '../components/review';
+import ExploreSection from '../components/explore';
 
 const Home = () => {
     return ( 
@@ -19,7 +19,7 @@ const Home = () => {
 
 
 <Featured />
-<Explore />
+<ExploreSection />
 <Mostsold />
 <Review />
 

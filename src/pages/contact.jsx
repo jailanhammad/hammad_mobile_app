@@ -3,10 +3,10 @@ import './home.css';
 import Header from '../components/header';
 
 import Nav from '../components/nav';
-import AboutUs from '../components/aboutus';
+import ContactUs from '../components/contactus';
 
 
-const About = () => {
+const Contact = () => {
     return ( 
         <>
         
@@ -16,7 +16,7 @@ const About = () => {
 
 <div className='all-components'>
 
-<AboutUs />
+<ContactUs />
 
 </div>
  
@@ -32,4 +32,4 @@ const About = () => {
      );
 }
  
-export default About;
+export default Contact;

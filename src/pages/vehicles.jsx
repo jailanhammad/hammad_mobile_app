@@ -1,5 +1,5 @@
 import React from 'react';
-import './about.css';
+import './home.css';
 import Header from '../components/header';
 
 import Nav from '../components/nav';
