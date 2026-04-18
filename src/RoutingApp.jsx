@@ -3,6 +3,7 @@ import Scroll from "./Scroll";
 import About from "./pages/about";
 import Home from "./pages/home";
 import Vehicles from "./pages/vehicles";
+import Menu from "./pages/menu";
 
 
 const RoutingApp = () => {
@@ -18,6 +19,7 @@ const RoutingApp = () => {
         <Route path="/" element={<Home />} /> 
         <Route path="/about" element={<About />} />
         <Route path="/Vehicles" element={<Vehicles />} />
+        <Route path="/Menu" element={<Menu />} />
 
       </Routes>
     </BrowserRouter>

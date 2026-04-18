@@ -6,11 +6,10 @@ import VehicleCard from './vehiclecard';
 
 const FilterSection = ({ lang = 'en' }) => {
     const [categories, setCategories] = useState([]);
-    const [vehicles, setVehicles] = useState([]); // 1. ضفنا state للعربيات
+    const [vehicles, setVehicles] = useState([]); 
     const [activeTab, setActiveTab] = useState('all');
 
     useEffect(() => {
-        // فتش التصنيفات (الفلاتر)
         const fetchCategories = async () => {
             const { data } = await supabase
                 .from('vehicle_categories_2')
@@ -19,7 +18,6 @@ const FilterSection = ({ lang = 'en' }) => {
             if (data) setCategories(data);
         };
 
-        // 2. فتش العربيات من جدول رقم 2
         const fetchVehicles = async () => {
             const { data } = await supabase
                 .from('vehicles_data_2')
@@ -33,7 +31,6 @@ const FilterSection = ({ lang = 'en' }) => {
 
     const isAr = lang === 'ar';
 
-    // 3. منطق الفلترة (اختياري لو حابة تفلتري بالنوع)
     const filteredVehicles = activeTab === 'all' 
         ? vehicles 
         : vehicles.filter(v => v.category_name_en.toLowerCase() === activeTab.toLowerCase());
@@ -47,7 +44,6 @@ const FilterSection = ({ lang = 'en' }) => {
                     <span>{isAr ? 'فلتر' : 'Filters'}</span>
                 </button>
 
-                {/* احذفي زرار الـ All الثابت من هنا */}
 
                 {categories.map((cat) => (
                     <button 
@@ -61,10 +57,10 @@ const FilterSection = ({ lang = 'en' }) => {
             </div>
             </div>
 
-            {/* 4. هنا الربط الصح: بنلف على العربيات ونبعت البيانات للـ Card */}
             <div className="vehicles-list-container">
                 {filteredVehicles.map((car) => (
                     <VehicleCard key={car.id} vehicle={car} lang={lang} />
+
                 ))}
             </div>
         </>

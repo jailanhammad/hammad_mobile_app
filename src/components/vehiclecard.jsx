@@ -12,7 +12,6 @@ const VehicleCard = ({ vehicle, lang = 'en' }) => {
 
                 <div className={`vehicle-card ${isAr ? 'rtl' : 'ltr'}`}>
                     <div className="card-image-container">
-                        {/* 2. استخدمنا الـ Optional Chaining (?.) لكل القيم */}
                         <img 
                             src={vehicle?.image_url} 
                             alt={isAr ? vehicle?.name_ar : vehicle?.name_en} 
@@ -34,13 +33,12 @@ const VehicleCard = ({ vehicle, lang = 'en' }) => {
                     <div className="card-info">
                         <div className="info-header">
                             <h3>{isAr ? vehicle?.name_ar : vehicle?.name_en}</h3>
-                            <span className="arrow-icon">{isAr ? '←' : '→'}</span>
                         </div>
                         
-                        <p className="year">{vehicle?.model_year || '2024'}</p>
+                        <p className="year">{isAr ? vehicle?.transmission_ar : vehicle?.transmission_en}</p>
                         
                         <p className="specs">
-                            {isAr ? vehicle?.engine_ar : vehicle?.engine_en} • {isAr ? vehicle?.transmission_ar : vehicle?.transmission_en}
+                            {isAr ? vehicle?.engine_ar : vehicle?.engine_en} • {isAr ? vehicle?.category_ar : vehicle?.category_en}
                         </p>
                         
                         {/* <hr className="divider" /> */}
@@ -49,8 +47,8 @@ const VehicleCard = ({ vehicle, lang = 'en' }) => {
                             <span className="main-price">
                                 {vehicle?.price_usd?.toLocaleString() || '0'}
                             </span>
-                            <span className="installment">
-                                {isAr ? 'تبدأ من' : 'from'} {vehicle?.monthly_installment}/{isAr ? 'شهر' : 'mo'}
+                            <span>
+                            <span className="arrow-icon">{isAr ? '←' : '→'}</span>
                             </span>
                         </div>
                     </div>

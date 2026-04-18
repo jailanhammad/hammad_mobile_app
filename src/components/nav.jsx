@@ -48,7 +48,7 @@ const Nav = ({ lang = 'en' }) => {
                 <span className="nav-label">{isAr ? navLabels.profile_ar : navLabels.profile_en}</span>
             </NavLink>
             
-            <NavLink to="/menu" className="nav-item">
+            <NavLink to="/Menu" className="nav-item">
                 <span className="nav-icon"><img src={menuIcon} alt="menu" /></span>
                 <span className="nav-label">{isAr ? navLabels.menu_ar : navLabels.menu_en}</span>
             </NavLink>
