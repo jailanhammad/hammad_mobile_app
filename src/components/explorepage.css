@@ -1,9 +1,9 @@
 .explore-container {
-    background: #000;
     min-height: 100vh;
-    padding: 40px 20px 100px;
     color: white;
     font-family: 'Inter', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .explore-header {

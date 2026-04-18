@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './explore.css';
+import { NavLink } from "react-router-dom"; 
 
 const ExploreSection = ({ lang = 'en' }) => {
   const [cars, setCars] = useState([]);
@@ -23,11 +24,14 @@ const ExploreSection = ({ lang = 'en' }) => {
     <section className={`exp-section ${isAr ? 'rtl' : 'ltr'}`}>
       <div className="exp-header">
         <h2 className="exp-title">
-            {isAr ? 'استكشف السيارات' : 'Explore Vehicles'}
+            {isAr ? 'السيارات' : 'Vehicles'}
         </h2>
+        <NavLink to="/vehicles" className="view-all">
         <a href="#all" className="view-all">
             {isAr ? 'عرض الكل' : 'View All'} <span>{isAr ? '‹' : '›'}</span>
         </a>
+        </NavLink>
+
       </div>
 
       <div className="card-slider">

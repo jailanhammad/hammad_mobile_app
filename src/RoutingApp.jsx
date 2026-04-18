@@ -6,6 +6,7 @@ import Vehicles from "./pages/vehicles";
 import Menu from "./pages/menu";
 import Contact from "./pages/contact";
 import Explore from './pages/explore';
+import Profile from "./pages/profile";
 
 
 const RoutingApp = () => {
@@ -24,6 +25,7 @@ const RoutingApp = () => {
         <Route path="/Menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/profile" element={<Profile />} />
 
       </Routes>
     </BrowserRouter>
