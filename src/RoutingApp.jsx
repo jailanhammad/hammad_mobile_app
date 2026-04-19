@@ -14,6 +14,8 @@ import IntroScreen from "./pages/intro";
 import Discover from "./pages/discover";
 import AiOnboarding from "./pages/ai";
 import ArOnboarding from "./pages/ar";
+import Sell from "./pages/sell";
+import Reviews from "./pages/reviews";
 
 const RoutingApp = () => {
     const [loading, setLoading] = useState(true);
@@ -42,6 +44,8 @@ const RoutingApp = () => {
                         <Route path="/discover" element={<Discover />} />
                         <Route path="/ai" element={<AiOnboarding />} />
                         <Route path="/ar" element={<ArOnboarding />} />
+                        <Route path="/sell" element={<Sell />} />
+                        <Route path="/reviews" element={<Reviews />} />
 
 
                     </Routes>

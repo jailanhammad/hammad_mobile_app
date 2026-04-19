@@ -1,0 +1,109 @@
+
+  .sell-car-container {
+    width: 100%;
+    max-width: 395px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #000;
+  }
+  
+  .sell-car-header-card {
+    background: linear-gradient(135deg, #8B0000 0%, #4A0000 100%); 
+    padding: 20px 25px;
+    border-radius: 16px;
+    color: #ffffff;
+    margin-top: 10px;
+  }
+  
+  .car-info-form-card {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #222;
+    margin-bottom: 80px;
+  }
+  
+  .form-heading {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+  }
+  
+  .sell-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+  }
+  
+  .sell-input-group label {
+    color: #888;
+    font-size: 0.85rem;
+  }
+  
+  .sell-input-group input {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+    outline: none;
+  }
+  
+  .sell-confirm-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, #6a0404, #3a0101);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .sell-car-step-item {
+    background-color: #111; 
+    padding: 20px;
+    width: 315px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center; 
+    gap: 20px;
+  }
+  .sell-car-steps-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .sell-car-step-number-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2.5px solid #d32f2f; 
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+  }
+  
+  .sell-car-step-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .sell-car-step-description {
+    color: #777;
+    margin: 0;
+    font-size: 0.9rem;
+  }
