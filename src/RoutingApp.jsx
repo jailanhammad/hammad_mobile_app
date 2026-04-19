@@ -16,6 +16,7 @@ import AiOnboarding from "./pages/ai";
 import ArOnboarding from "./pages/ar";
 import Sell from "./pages/sell";
 import Reviews from "./pages/reviews";
+import Services from "./pages/services";
 
 const RoutingApp = () => {
     const [loading, setLoading] = useState(true);
@@ -46,6 +47,7 @@ const RoutingApp = () => {
                         <Route path="/ar" element={<ArOnboarding />} />
                         <Route path="/sell" element={<Sell />} />
                         <Route path="/reviews" element={<Reviews />} />
+                        <Route path="/services" element={<Services />} />
 
 
                     </Routes>
