@@ -99,7 +99,10 @@ const SettingsPage = ({ userId }) => {
 
         <div className="settings-item logout-item">
           <div className="item-left">
+          <NavLink to="/login" className="nav-item" end>
             <LogOut className="icon-red" size={20} />
+          </NavLink>
+
             <span>{t[lang].logout}</span>
           </div>
           <ChevronRight size={20} className="chevron" />

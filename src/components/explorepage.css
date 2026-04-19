@@ -1,9 +1,8 @@
 .explore-container {
-    min-height: 100vh;
     color: white;
     font-family: 'Inter', sans-serif;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
 }
 
 .explore-header {
@@ -47,9 +46,7 @@
     transform: scale(0.95);
 }
 
-.large { grid-column: span 2; grid-row: span 2; }
-.medium { grid-column: span 1; grid-row: span 2; }
-.small { grid-column: span 1; grid-row: span 1; }
+
 
 .card-content {
     position: absolute;
@@ -74,12 +71,7 @@
 
 .card-bg {
     position: absolute;
-    right: -10px;
-    top: 50%;
-    transform: translateY(-50%);
     font-size: 80px;
-    opacity: 0.2;
-    filter: grayscale(1);
 }
 
 .glass-overlay {
