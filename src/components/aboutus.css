@@ -41,7 +41,7 @@
     background: #111;
     padding: 20px;
     border-radius: 20px;
-    border-bottom: 3px solid #e31b23; /* خط أحمر من تحت زي الديزاين */
+    border-bottom: 3px solid #e31b23; 
 }
 
 .stat-item h3 {
@@ -71,5 +71,4 @@
     box-shadow: 0 10px 20px rgba(227, 27, 35, 0.3);
 }
 
-/* دعم العربي */
 .about-container.rtl { direction: rtl; }

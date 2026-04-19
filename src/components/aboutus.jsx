@@ -1,6 +1,7 @@
 import React from 'react';
 import './aboutus.css';
 import logo from '../assets/home/logo-big.svg';
+import { NavLink } from "react-router-dom"; 
 
 const AboutUs = ({ lang = 'en' }) => {
     const isAr = lang === 'ar';
@@ -16,7 +17,6 @@ const AboutUs = ({ lang = 'en' }) => {
                 <h1>{isAr ? 'من نحن' : 'About Us'}</h1>
             </div>
 
-            {/* وصف الشركة داخل كارت زجاجي */}
             <div className="about-card">
                 <p>
                     {isAr 
@@ -25,7 +25,6 @@ const AboutUs = ({ lang = 'en' }) => {
                 </p>
             </div>
 
-            {/* أرقام أو إحصائيات سريعة */}
             <div className="stats-grid">
                 <div className="stat-item">
                     <h3>10K+</h3>
@@ -37,10 +36,12 @@ const AboutUs = ({ lang = 'en' }) => {
                 </div>
             </div>
 
-            {/* زرار تواصل معنا */}
+            <NavLink to="/contact" className="nav-item" end>
             <button className="contact-btn">
                 {isAr ? 'تواصل معنا' : 'Contact Us'}
             </button>
+            </NavLink>
+
         </div>
     );
 };

@@ -18,6 +18,7 @@ import Sell from "./pages/sell";
 import Reviews from "./pages/reviews";
 import Services from "./pages/services";
 import Installments from "./pages/installments";
+import Settings from "./pages/settings";
 
 const RoutingApp = () => {
     const [loading, setLoading] = useState(true);
@@ -50,6 +51,7 @@ const RoutingApp = () => {
                         <Route path="/reviews" element={<Reviews />} />
                         <Route path="/services" element={<Services />} />
                         <Route path="/installments" element={<Installments />} />
+                        <Route path="/settings" element={<Settings />} />
 
 
                     </Routes>

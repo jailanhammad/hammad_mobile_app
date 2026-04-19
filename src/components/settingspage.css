@@ -1,0 +1,90 @@
+.settings-wrapper {
+    color: #fff;
+    font-family: "Poppins";
+  }
+  
+  .settings-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  
+  .settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .settings-item, .settings-item-expand {
+    background: #121212;
+    border-radius: 16px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .item-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  .icon-gold { color: #c5a059; }
+  .icon-red { color: #d32f2f; }
+  .chevron { color: #444; }
+  
+  .logout-item span { color: #fff; }
+  
+  .contact-btn {
+    width: 100%;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 30px;
+    cursor: pointer;
+  }
+  
+  .lang-switches {
+    display: flex;
+    background: #000;
+    padding: 4px;
+    border-radius: 10px;
+    
+  }
+  .item-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 65px;
+
+  }
+  .lang-switches button {
+    background: transparent;
+    border: none;
+    color: #666;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .lang-switches button.active {
+    background: #c5a059;
+    color: #000;
+  }
+  
+  .rtl { direction: rtl; }
+  .rtl .chevron { transform: rotate(180deg); }
+  .rtl .item-left { gap: 15px; }
