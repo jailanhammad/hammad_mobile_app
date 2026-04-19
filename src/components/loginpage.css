@@ -3,10 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    margin-top: 40px;
-    /* height: 790px; */
- 
+    margin: 0 auto;    
   }
   
   .login-card {
@@ -14,14 +11,15 @@
     border-radius: 20px;
     text-align: center;
     color: white;
-    box-shadow: 0 0 40px rgba(123, 0, 0, 0.692);
+    box-shadow: 0 0 40px rgba(123, 0, 0, 0.392);
     font-family: "Poppins";
     padding: 20px;
     background-color: #171414;
-
+    height: 700px;
+    margin-top: 40px;
     background: linear-gradient(
     135deg,
-    rgb(21, 1, 1),
+    rgba(21, 1, 1, 0.459),
     rgb(30, 0, 0)
     );
     backdrop-filter: blur(20px);
@@ -34,6 +32,9 @@
  .welcomeback{
     font-size: 26px;
     /* margin-bottom: 5px; */
+  }
+  .inputs-22{
+    margin-top: 40px;
   }
   
   .subtitle {
@@ -67,6 +68,8 @@
     background: transparent;
     border: none;
     outline: none;
+    height: 30px;
+
     color: white;
   }
   

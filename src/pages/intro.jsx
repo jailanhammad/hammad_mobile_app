@@ -25,7 +25,7 @@ const IntroScreen = () => {
 
 
 
-        <NavLink to="/login" className="explore-btn-2" >
+        <NavLink to="/discover" className="explore-btn-2" >
         <button className="explore-btn">
             Explore
           </button>

@@ -11,6 +11,9 @@ import Profile from "./pages/profile";
 import Login from "./pages/login";
 import Preloader from "./components/preloader"; 
 import IntroScreen from "./pages/intro";
+import Discover from "./pages/discover";
+import AiOnboarding from "./pages/ai";
+import ArOnboarding from "./pages/ar";
 
 const RoutingApp = () => {
     const [loading, setLoading] = useState(true);
@@ -36,6 +39,10 @@ const RoutingApp = () => {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/explore" element={<Explore />} />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/discover" element={<Discover />} />
+                        <Route path="/ai" element={<AiOnboarding />} />
+                        <Route path="/ar" element={<ArOnboarding />} />
+
 
                     </Routes>
                 </BrowserRouter>

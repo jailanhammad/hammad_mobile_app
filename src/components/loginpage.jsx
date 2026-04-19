@@ -24,6 +24,8 @@ const LoginPage = () => {
         <h1 className='welcomeback'>Welcome Back</h1>
         <p className="subtitle">Sign in to continue your journey</p>
 
+<div className='inputs-22'>
+
         <h1 className='main-title'>Email</h1>        
         <div className="input-group">
           <span className="icon">
@@ -48,6 +50,8 @@ const LoginPage = () => {
         </div>
 
         <div className="forgot">Forgot Password?</div>
+        
+</div>
 
         <NavLink to="/home" end>
         <button className="signin-btn">Sign In</button>
@@ -75,7 +79,7 @@ const LoginPage = () => {
           Don't have an account? <span>Sign Up</span>
         </p>
 
-        <p className="support">Need help? Contact Support</p>
+        {/* <p className="support">Need help? Contact Support</p> */}
       </div>
     </div>
         
