@@ -1,0 +1,77 @@
+.preloader {
+
+  width: 395px;
+  height: 855px;
+  background-color: #000000;
+  margin: 0 auto;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+.all-components{
+    padding: 0px 20px 10px 20px;
+    flex: 1; 
+    overflow-y: auto; 
+    padding-bottom: 20px;
+    scrollbar-width: none;
+
+}
+.all-components::-webkit-scrollbar {
+    display: none;
+  }
+
+.preloader::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.719), transparent 70%);
+  filter: blur(80px);
+  animation: glowMove 6s infinite linear;
+}
+
+@keyframes glowMove {
+  0% { transform: translate(-50px, -50px); }
+  50% { transform: translate(50px, 50px); }
+  100% { transform: translate(-50px, -50px); }
+}
+
+.logo-wrapper img {
+  transform: scale(0.7);
+  animation: logoAppear 1s ease-out forwards;
+ }
+
+@keyframes logoAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.brand-name {
+  margin-top: 20px;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: #ED1C24;
+  font-family: "Poppins";
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s ease;
+
+}
+
+.brand-name.show {
+  opacity: 1;
+  transform: translateY(0);
+}

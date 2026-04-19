@@ -28,7 +28,7 @@ const Nav = ({ lang = 'en' }) => {
     return (
         <nav className={`nav-bar ${isAr ? 'rtl-nav' : 'ltr-nav'}`}>
             
-            <NavLink to="/" className="nav-item" end>
+            <NavLink to="/home" className="nav-item" end>
                 <span className="nav-icon"><img src={homeIcon} alt="home" /></span>
                 <span className="nav-label">{isAr ? navLabels.home_ar : navLabels.home_en}</span>
             </NavLink>

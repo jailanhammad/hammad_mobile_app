@@ -1,0 +1,244 @@
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 790px;
+    margin-top: 20px;
+ 
+  }
+  
+  .login-card {
+    width: 390px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 40px rgba(123, 0, 0, 0.692);
+    font-family: "Poppins";
+    padding: 20px;
+    background-color: #171414;
+
+    background: linear-gradient(
+    135deg,
+    rgb(21, 1, 1),
+    rgb(30, 0, 0)
+    );
+    backdrop-filter: blur(20px);
+  }
+  
+  .logo-2 img{
+    width: 100px;
+  }
+  
+ .welcomeback{
+    font-size: 26px;
+    /* margin-bottom: 5px; */
+  }
+  
+  .subtitle {
+    color: #aaa;
+    font-size: 14px;
+    font-family: "Poppins";
+
+  }
+  .main-title{
+    color: #ffffff;
+    font-size: 14px;
+    text-align: left;
+    font-weight: 400;
+    font-family: "Poppins";
+
+    
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 12px;
+    /* margin-bottom: 15px; */
+  }
+  
+  .input-group input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+  }
+  
+  .input-group input::placeholder {
+    color: #888;
+  }
+  
+  .icon, .eye {
+    color: #777;
+  }
+  
+  .forgot {
+    text-align: right;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .signin-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid red;
+    background: transparent;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .signin-btn:hover {
+    background: red;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+    color: #777;
+    font-size: 12px;
+  }
+  
+  .divider span {
+    flex: 1;
+    height: 1px;
+    background: #333;
+    
+  }
+  
+  .divider p {
+    margin: 0 10px;
+  }
+  
+  .social-buttons {
+    display: flex;
+    gap: 10px;
+    
+ 
+  }
+  
+  .social-buttons button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: white;
+    cursor: pointer;
+
+  }
+  .btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+  }
+  .signup-text {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+  
+  .signup-text span {
+    color: red;
+    cursor: pointer;
+  }
+  
+  .support {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #777;
+  }
+
+  .login-card {
+    animation: cardEnter 0.8s ease-out;
+  }
+  
+  @keyframes cardEnter {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .login-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .login-card::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.458), transparent 30%);
+    animation: glowMove 4s linear infinite;
+  }
+  
+  @keyframes glowMove {
+    100% {
+      transform: translate(-20%, -20%);
+    }
+  }
+
+  .input-group {
+    transition: 0.3s;
+    border: 1px solid transparent;
+  }
+  
+  .input-group:focus-within {
+    border: 1px solid red;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    transform: scale(1.02);
+  }
+
+  .signin-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .signin-btn:active {
+    transform: scale(0.97);
+  }
+
+  .signin-btn::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+  }
+  
+  .signin-btn:active::after {
+    width: 200px;
+    height: 200px;
+  }
+
+  .social-buttons button {
+    transition: 0.3s;
+  }
+  
+  .social-buttons button:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 0, 0, 0.15);
+  }

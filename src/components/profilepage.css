@@ -1,0 +1,125 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .account-summary-card {
+    background-color: #121212;
+    border: 1px solid #2a2a2a;
+    border-radius: 24px;
+    padding: 15px;
+    /* width: 450px; */
+    color: #ffffff;
+    font-family: "Poppins";
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .identity-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+    padding-left: 10px;
+  }
+  
+  .identity-section__avatar {
+    background: linear-gradient(145deg, #6b0000, #3d0000);
+    width: 85px;
+    height: 110px;
+    border-radius: 45%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 500;
+    margin-right: 25px;
+  }
+  
+  .identity-section__name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .identity-section__email {
+    margin: 4px 0 0 0;
+    color: #888;
+    font-size: 16px;
+  }
+  .heart-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  
+  .activity-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid #222;
+    padding-top: 25px;
+  }
+  
+  .activity-metrics__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .activity-metrics__item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background-color: #333;
+  }
+  
+  .activity-metrics__value {
+    color: #d4af37; 
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  
+  .activity-metrics__label {
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+  }
+
+.profile-container-2 {
+    margin-top: 20px;
+    color: white;
+}
+
+.saved-cars-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.header-left { display: flex; align-items: center; gap: 8px; }
+.header-left h2 { font-size: 17px; font-weight: 600; margin: 0; }
+
+.view-all-btn {
+    background: transparent; border: none; color: #e31b23;
+    font-size: 13px; cursor: pointer;
+}
+
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.status-text { text-align: center; color: #444; margin-top: 20px; }
+
+.rtl { direction: rtl; }

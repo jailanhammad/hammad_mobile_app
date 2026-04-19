@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase'; 
 import './header.css';
+import { NavLink } from "react-router-dom"; 
 
 
 const Header = ({ lang = 'en' }) => {
@@ -31,8 +32,11 @@ const Header = ({ lang = 'en' }) => {
         <section className={`header ${isAr ? 'rtl-mode' : 'ltr-mode'}`}>
             <div className='header-row'>
                 <div className='welcome-div'>
+                <NavLink to="/" className="nav-item">
+
                     <img src={headerData.user_avatar} alt="User Logo" className='logo' />
-                    
+                </NavLink>
+   
                     <h1 className='welcome-text'>
                         {isAr ? headerData.welcome_message_ar : headerData.welcome_message_en}, <br /> 
                         <span className='jailan-text'>

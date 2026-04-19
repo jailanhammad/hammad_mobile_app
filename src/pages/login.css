@@ -1,0 +1,22 @@
+.login-css{
+    width: 395px;
+    height: 855px;
+    background: rgb(0, 0, 0);
+    backdrop-filter: blur(20px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden; 
+    position: relative;
+}
+.all-components{
+    padding: 0px 20px 10px 20px;
+    flex: 1; 
+    overflow-y: auto; 
+    padding-bottom: 20px;
+    scrollbar-width: none;
+
+}
+.all-components::-webkit-scrollbar {
+    display: none;
+  }
