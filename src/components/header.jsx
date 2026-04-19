@@ -32,8 +32,7 @@ const Header = ({ lang = 'en' }) => {
         <section className={`header ${isAr ? 'rtl-mode' : 'ltr-mode'}`}>
             <div className='header-row'>
                 <div className='welcome-div'>
-                <NavLink to="/" className="nav-item">
-
+                <NavLink to="/login" className="nav-item">
                     <img src={headerData.user_avatar} alt="User Logo" className='logo' />
                 </NavLink>
    
@@ -45,10 +44,13 @@ const Header = ({ lang = 'en' }) => {
                     </h1>
                 </div>
 
+
                 <div className='notification-div'>
                     <img src={headerData.notification_icon_url} alt="Bell" className='notification-icon' />
                     {headerData.has_notifications && <span className="notify-dot"></span>}
                 </div>
+
+
             </div>
 
             <div className='search-div'>

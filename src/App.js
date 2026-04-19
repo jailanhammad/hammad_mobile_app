@@ -28,7 +28,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Preloader from "./components/preloader"; 
-import Login from "./pages/login";
+import IntroScreen from "./pages/intro";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -43,7 +43,7 @@ function App() {
         <Preloader onFinish={handlePreloaderFinish} />
       ) : (
         <div className="content-fade-in">
-          <Login lang="en" /> 
+          <IntroScreen lang="en" /> 
         </div>
       )}
     </div>
