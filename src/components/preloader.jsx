@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./preloader.css";
-import logo from "../assets/home/pre.svg";
+import logo2 from "../assets/home/pre.svg";
 
 export default function Preloader({ onFinish }) {
   const [showText, setShowText] = useState(false);
@@ -23,24 +23,17 @@ export default function Preloader({ onFinish }) {
   return (
 <>
 
-            
+<div className='all-components-0'>
+  <div className="preloader-0">
+    <div className="logo-wrapper-0">
+      <img src={logo2} alt="logo" />
+    </div>
 
-<div className='all-components'>
-
-<div className="preloader">
-
-<div className="logo-wrapper">
-  <img src={logo} alt="logo" />
-</div>
-
-<h1 className={`brand-name ${showText ? "show" : ""}`}>
-  HAMMAD MOTORS
-</h1>
-
-</div>
-
-</div>
- 
+    <h1 className={`brand-name ${showText ? "show" : ""}`}>
+      HAMMAD MOTORS
+    </h1>
+  </div>
+</div>  
 
 
     </>
