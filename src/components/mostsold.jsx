@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './mostsold.css';
+import { NavLink } from "react-router-dom"; 
 
 const Mostsold = ({ lang = 'en' }) => {
   const [soldCars, setSoldCars] = useState([]);
@@ -50,7 +51,13 @@ const Mostsold = ({ lang = 'en' }) => {
             <div className="p-details">
               <div className="p-row">
                 <h3>{isAr ? car.name_ar : car.name_en}</h3>
-                <span className="p-arrow">{isAr ? '←' : '→'}</span>
+
+            <NavLink to="/carpage" className="brand-navlink" end>
+            <div className="arrow-icon">
+            <span className="arrow-icon">{isAr ? '←' : '→'}</span>
+            </div>
+            </NavLink>
+
               </div>
               <p className="p-year">{car.year}</p>
               <p className="p-specs">{isAr ? car.specs_ar : car.specs_en}</p>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './featured.css';
+import { NavLink } from "react-router-dom"; 
 
 const Featured = ({ lang = 'en' }) => {
   const [car, setCar] = useState(null);
@@ -48,11 +49,13 @@ const Featured = ({ lang = 'en' }) => {
               {isAr ? car.price_ar : car.price_en}
             </span>
             
+
+            <NavLink to="/carpage" className="brand-navlink" end>
             <div className="arrow-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <path d={isAr ? "M15 18l-6-6 6-6" : "M9 18l6-6-6-6"} />
-              </svg>
+            <span className="arrow-icon">{isAr ? '←' : '→'}</span>
             </div>
+            </NavLink>
+
           </div>
         </div>
       </div>

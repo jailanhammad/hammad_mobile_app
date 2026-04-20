@@ -20,6 +20,7 @@ import Services from "./pages/services";
 import Installments from "./pages/installments";
 import Settings from "./pages/settings";
 import ArExperience from "./pages/arexperience";
+import CarPage from "./pages/carpage";
 
 const RoutingApp = () => {
     const [loading, setLoading] = useState(true);
@@ -55,6 +56,7 @@ const RoutingApp = () => {
                         <Route path="/settings" element={<Settings />} />
                         <Route path="/settings" element={<Settings />} />
                         <Route path="/ar_view" element={<ArExperience />} />
+                        <Route path="/carpage" element={<CarPage />} />
 
 
                     </Routes>

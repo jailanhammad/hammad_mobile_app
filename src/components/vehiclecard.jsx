@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './vehiclecard.css';
 import { supabase } from '../supabase';
+import { NavLink } from "react-router-dom"; 
 
-// لازم تضيفي onToggle هنا بين الأقواس
 const VehicleCard = ({ vehicle, lang = 'en', onToggle }) => {
     
     const isAr = lang === 'ar';
     
-    // التعديل هنا: نربط الـ State مباشرة بالـ vehicle اللي جاي من السوبابيز
     const [isFavorite, setIsFavorite] = useState(vehicle?.is_favorite);
 
-    // دي عشان لو الـ props اتغيرت الـ State تتحدث
     useEffect(() => {
         setIsFavorite(vehicle?.is_favorite);
     }, [vehicle?.is_favorite]);
@@ -21,18 +19,16 @@ const VehicleCard = ({ vehicle, lang = 'en', onToggle }) => {
         const newState = !isFavorite;
         setIsFavorite(newState);
     
-        // 1. تنظيف الـ ID من أي مسافات
         const cleanId = vehicle.id.trim();
     
         try {
             const { data, error } = await supabase
-                .from('vehicles_data_2') // اسم الجدول الحقيقي من ملف الـ SQL بتاعك
+                .from('vehicles_data_2')
                 .update({ is_favorite: newState })
                 .eq('id', cleanId) 
                 .select();
     
             if (error) {
-                // لو فشل بالـ ID، هنجرب نحدث بالاسم عشان نضمن إنها تشتغل
                 console.log("Retrying with Name...");
                 await supabase
                     .from('vehicles_data_2')
@@ -83,7 +79,11 @@ const VehicleCard = ({ vehicle, lang = 'en', onToggle }) => {
                     <span className="main-price">
                         {vehicle?.price_usd?.toLocaleString() || '0'}
                     </span>
+
+                    <NavLink to="/carpage" className="brand-navlink" end>
                     <span className="arrow-icon">{isAr ? '←' : '→'}</span>
+                    </NavLink>
+
                 </div>
             </div>
         </div>

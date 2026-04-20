@@ -3,6 +3,7 @@ import { supabase } from '../supabase';
 import './explore.css';
 import { NavLink } from "react-router-dom"; 
 
+
 const ExploreSection = ({ lang = 'en' }) => {
   const [cars, setCars] = useState([]);
 
@@ -52,7 +53,14 @@ const ExploreSection = ({ lang = 'en' }) => {
             <div className="car-info">
               <div className="title-row">
                 <h3>{isAr ? car.name_ar : car.name_en}</h3>
-                <span className="arrow">{isAr ? '↖' : '↗'}</span>
+
+
+            <NavLink to="/carpage" className="brand-navlink" end>
+            <div className="arrow-icon">
+            <span className="arrow-icon">{isAr ? '←' : '→'}</span>
+            </div>
+            </NavLink>
+
               </div>
               <p className="year">{car.year}</p>
               <p className="specs">{isAr ? car.specs_ar : car.specs_en}</p>

@@ -21,6 +21,10 @@
 .vehicle-card.rtl .arrow-icon {
     transform: scaleX(1); 
 }
+.arrow-icon{
+    text-decoration: none;
+    color: white;
+}
 .vehicle-card {
     background: #151515;
     border-radius: 16px;
