@@ -22,7 +22,7 @@ const VehicleCard = ({ vehicle, lang = 'en', onToggle }) => {
         const cleanId = vehicle.id.trim();
     
         try {
-            const { data, error } = await supabase
+            const { error } = await supabase
                 .from('vehicles_data_2')
                 .update({ is_favorite: newState })
                 .eq('id', cleanId) 

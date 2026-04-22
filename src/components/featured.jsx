@@ -8,7 +8,7 @@ const Featured = ({ lang = 'en' }) => {
 
   useEffect(() => {
     const fetchFeatured = async () => {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('featured_cars')
         .select('*')
         .single(); 

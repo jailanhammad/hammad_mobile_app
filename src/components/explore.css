@@ -64,30 +64,23 @@
     font-weight: 600;
   }
   
-  .fav-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
-    width: 24px;
-    cursor: pointer;
-  }
-  
+
   .car-info {
     padding: 16px;
   }
-  
+
   .title-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
   }
   
   .car-info h3 {
     font-size: 18px;
     margin: 0;
-    font-weight: 600;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.706)  ; ;
   }
   
   .arrow {

@@ -50,7 +50,7 @@
 .menu-items-border-box {
     width: 100%;
     max-width: 380px;
-    height: 640px;
+    max-height: calc(100dvh - 200px);
     border: 1px solid rgba(227, 27, 35, 0.3);
     border-radius: 30px;
     background: rgba(10, 10, 10, 0.5);

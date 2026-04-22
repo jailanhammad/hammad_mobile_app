@@ -2,7 +2,6 @@ import React from 'react';
 import './home.css';
 import MenuPage from '../components/menupage';
 import Nav from '../components/nav';
-import Header from '../components/header';
 
 
 const Menu = () => {

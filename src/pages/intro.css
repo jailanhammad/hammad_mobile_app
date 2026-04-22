@@ -1,6 +1,8 @@
 .home {
-    width: 395px;
-    height: 855px;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: 100dvh;
     background-color: #000;
     margin: 0 auto;
     display: flex;
@@ -87,7 +89,7 @@
     color: #bbb;
     line-height: 1.4;
     font-family: "Poppins";
-    width: 300px;
+    max-width: 32ch;
     opacity: 0;
     animation: fadeInUp 1s ease-out 1.2s forwards;
 }

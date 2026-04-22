@@ -6,7 +6,7 @@ import './cardetails.css';
 const CarDetails = () => {
     const { id } = useParams();
     const [car, setCar] = useState(null);
-    const [lang, setLang] = useState('en'); 
+    const [lang] = useState('en'); 
 
     useEffect(() => {
         const fetchCarDetails = async () => {

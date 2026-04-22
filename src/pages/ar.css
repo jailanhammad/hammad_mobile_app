@@ -1,6 +1,8 @@
 .onboarding-main-wrapper-3 {
-    width: 395px;
-    height: 855px;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
     background: linear-gradient(to right, #0e011f, #180000);
     margin: 0 auto;
     overflow: hidden;

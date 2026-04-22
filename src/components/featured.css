@@ -46,7 +46,7 @@
     width: fit-content;
     padding: 8px 20px;
     border-radius: 50px;
-    margin-bottom: 15px;
+    margin-bottom: 100px;
 }
   
 .badge-text {
@@ -57,11 +57,10 @@
 }
   
 .car-title {
-    color: white;
-    font-size: 28px;
+    color: rgba(255, 255, 255, 0.787)  ; 
+    font-size: 22px;
     margin: 0;
     font-weight: 600;
-    margin-bottom: 10px;
 }
   
 .footer-row {
@@ -72,8 +71,8 @@
   
 .price {
     color: #e31b23; 
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 400;
 }
   
 .arrow-icon {

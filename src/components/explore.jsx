@@ -4,8 +4,10 @@ import './explore.css';
 import { NavLink } from "react-router-dom"; 
 
 
-const ExploreSection = ({ lang = 'en' }) => {
+const ExploreSection = ({ lang = 'en'  }) => {
+
   const [cars, setCars] = useState([]);
+  const isAr = lang === 'ar';
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -19,7 +21,7 @@ const ExploreSection = ({ lang = 'en' }) => {
     fetchCars();
   }, []);
 
-  const isAr = lang === 'ar';
+
 
   return (
     <section className={`exp-section ${isAr ? 'rtl' : 'ltr'}`}>
@@ -43,11 +45,7 @@ const ExploreSection = ({ lang = 'en' }) => {
               <span className="type-tag">
                 {isAr ? car.type_tag_ar : car.type_tag_en}
               </span>
-              <button className="fav-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-                </svg>
-              </button>
+
             </div>
 
             <div className="car-info">

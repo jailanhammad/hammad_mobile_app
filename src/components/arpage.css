@@ -12,7 +12,7 @@
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 15px;
   }
-  .ar-header h1 { font-size: 1.5rem; font-weight: 700; margin: 0; }
+  .ar-header h1 { font-size: 1.5rem; font-weight: 700; margin: 0; color: rgba(255, 255, 255, 0.706) ;}
   .ar-header p { color: #888; font-size: 0.9rem; margin-top: 5px; }
   
   .ar-viewport {
@@ -38,8 +38,9 @@
   }
   
   .ar-section { margin-bottom: 30px; }
+  .ar-section h3{ color: rgba(255, 255, 255, 0.706) }
   .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-  .section-head h3 { font-size: 1.1rem; margin: 0; }
+  .section-head h3 { font-size: 1.1rem; margin: 0; color: rgba(255, 255, 255, 0.706)  ; }
   
   .color-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; }
   .color-circle { 
@@ -49,9 +50,9 @@
   .color-circle.active { border-color: #fff; transform: scale(1.1); }
   .color-item span { font-size: 0.75rem; color: #888; }
   
-  .interior-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .interior-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px;  }
   .glass-btn {
-    background: #121212; border: 1px solid #222; color: #fff;
+    background: #121212; border: 1px solid #222; color: #888;
     padding: 15px; border-radius: 12px; font-size: 0.9rem; cursor: pointer;
   }
   
@@ -61,7 +62,7 @@
     border-radius: 12px; display: flex; align-items: center; gap: 15px;
   }
   .feature-dot { color: #D32F2F; background: rgba(211, 47, 47, 0.1); padding: 8px; border-radius: 8px; }
-  .feature-row span { font-size: 0.9rem; color: #ccc; }
+  .feature-row span { font-size: 0.9rem; color: #959595; }
   
   .save-preview-btn {
     width: 100%; background: #151515; color: #fff; border: 1px solid #222;

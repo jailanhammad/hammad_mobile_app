@@ -1,6 +1,8 @@
 .home{
-    width: 395px;
-    height: 855px;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: 100dvh;
     background-color: #141414;
     margin: 0 auto;
     /* border: 10px solid black; */

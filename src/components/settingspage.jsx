@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
-import { ChevronRight, Settings, Bell, Heart, LogOut, MessageCircle, Globe } from 'lucide-react';
+import { ChevronRight, Settings, Bell, Heart, LogOut, Globe } from 'lucide-react';
 import './settingspage.css';
 import { NavLink } from "react-router-dom"; 
 

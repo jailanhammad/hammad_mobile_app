@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const ExplorePage = () => {
     const [brands, setBrands] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [language, setLanguage] = useState('en'); 
+    const [language] = useState('en'); 
 
     useEffect(() => {
         fetchBrands();
