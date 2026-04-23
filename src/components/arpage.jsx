@@ -112,7 +112,6 @@ import './arpage.css';
 import { NavLink } from "react-router-dom"; 
 
 const ArPage = ({ lang = 'en' }) => {
-  // بنخزن الـ Hex code عشان نبعته لصفحة الـ AR
   const [selectedColor, setSelectedColor] = useState({ name: 'Red', hex: '#D32F2F' });
 
   const colors = [
@@ -140,24 +139,22 @@ const ArPage = ({ lang = 'en' }) => {
         <p>See your dream car in your space</p>
       </div>
 
-      {/* الـ Viewport اللي في الصورة عندك */}
       <div className="ar-viewport">
         <div className="corner-tl"></div><div className="corner-tr"></div>
         <div className="corner-bl"></div><div className="corner-br"></div>
         <div className="viewport-content">
-          {/* لو عايزة تحطي صورة العربية هنا قبل ما يفتح الـ AR ممكن */}
           <Camera size={48} color="#444" />
           <span>Place vehicle in your space</span>
         </div>
       </div>
 
-      {/* التعديل هنا: بنبعت اللون المختار كـ State لصفحة الـ Scene */}
       <NavLink 
         to="/scene" 
         state={{ color: selectedColor.hex }} 
         style={{ textDecoration: 'none' }}
       >
-        <button className="start-ar-btn">
+
+        <button className="start-ar-btn" >
           <Camera size={20} />
           Start AR Experience
         </button>

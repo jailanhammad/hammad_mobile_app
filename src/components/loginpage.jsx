@@ -56,7 +56,7 @@ const LoginPage = () => {
         <NavLink to="/home" end>
         <button className="signin-btn">Sign In</button>
         </NavLink>
-
+{/* 
         <div className="divider">
           <span></span>
           <p>or continue with</p>
@@ -68,12 +68,7 @@ const LoginPage = () => {
         <img src={google} alt="logo" />
             Google
         </button>
-
-        <button className='btns'>
-        <img src={apple} alt="logo" />
-            Apple
-        </button>
-        </div>
+        </div> */}
 
         <p className="signup-text">
           Don't have an account? <span>Sign Up</span>
