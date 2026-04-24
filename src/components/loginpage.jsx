@@ -5,8 +5,6 @@ import logo from '../assets/login/logo.svg';
 import email from '../assets/login/email.svg';
 import pass from '../assets/login/pass.svg';
 import eye from '../assets/login/eye.svg';
-import google from '../assets/login/google.svg';
-import apple from '../assets/login/apple.svg';
 
 const LoginPage = () => {
     return ( 

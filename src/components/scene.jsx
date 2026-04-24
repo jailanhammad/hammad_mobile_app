@@ -1,76 +1,106 @@
-import React, { useRef, useState, useEffect } from 'react';
-import './scene.css';
-import car from '../assets/ar/2016_mercedes-benz_gle63_amg_coupe (1).glb';
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import "./scene.css";
+
+import lambo from "../assets/ar/lambo.glb";
+import lamboo from "../assets/ar/lambo.usdz";
+
 
 const Scene = () => {
   const modelViewerRef = useRef(null);
-  const [selectedColor, setSelectedColor] = useState({ name: 'Black', hex: '#000000', gl: [0, 0, 0, 1] });
+  const [isModelReady, setIsModelReady] = useState(false);
+  const [selectedColor, setSelectedColor] = useState({
+    name: "Black",
+    hex: "#000000",
+    gl: [0, 0, 0, 1],
+  });
 
-  const availableColors = [
-    { name: 'Black', hex: '#000000', gl: [0, 0, 0, 1] },
-    { name: 'Red', hex: '#D32F2F', gl: [0.83, 0.18, 0.18, 1] },
-    { name: 'Blue', hex: '#1976D2', gl: [0.1, 0.46, 0.82, 1] },
-    { name: 'White', hex: '#FFFFFF', gl: [1, 1, 1, 1] }
-  ];
+  const availableColors = useMemo(() => [
+    { name: "Obsidian Black", hex: "#0A0A0A", gl: [0.01, 0.01, 0.01, 1] },
+    { name: "Candy Red", hex: "#8B0000", gl: [0.5, 0.0, 0.0, 1] },
+    { name: "Metallic Blue", hex: "#001F3F", gl: [0.0, 0.1, 0.3, 1] },
+    { name: "Pearl White", hex: "#F5F5F5", gl: [0.95, 0.95, 0.95, 1] },
+    { name: "Silver Arrow", hex: "#C0C0C0", gl: [0.75, 0.75, 0.75, 1] }
+  ], []);
 
   useEffect(() => {
-    if (modelViewerRef.current) {
-      // ده اللي هيفتح الكاميرا فوراً أول ما الصفحة تفتح
-      modelViewerRef.current.activateAR();
-    }
+    const mv = modelViewerRef.current;
+    if (!mv) return;
+    const onLoad = () => setIsModelReady(true);
+    mv.addEventListener("load", onLoad);
+    return () => mv.removeEventListener("load", onLoad);
   }, []);
 
-  const changeCarColor = (color) => {
+  const applyCarPaintColor = (color) => {
     setSelectedColor(color);
     const mv = modelViewerRef.current;
-    
-    if (mv && mv.model) {
-      // بيلف على كل حتة في العربية ويغير لونها لو هي "دهان"
-      mv.model.materials.forEach((material) => {
-        // بنغير لون أي خامة اسمها فيها "paint" أو "body" أو "car"
-        if (material.name.toLowerCase().includes('paint') || 
-            material.name.toLowerCase().includes('body')) {
-          material.pbrMetallicRoughness.setBaseColorFactor(color.gl);
-        }
-      });
-    }
-  
+    if (!mv || !mv.model) return;
+
+    mv.model?.materials?.forEach((material) => {
+      const name = material.name.toLowerCase();
+      if (name.includes("paint") || name.includes("body") || name.includes("car_color")) {
+        material.pbrMetallicRoughness.setBaseColorFactor(color.gl);
+        material.pbrMetallicRoughness.setRoughnessFactor(0.3);
+        material.pbrMetallicRoughness.setMetallicFactor(1.0);
+      }
+    });
   };
 
   return (
-    <div className="ar-container-full">
+    <div className="scene-container">
+
+
+
       <model-viewer
+
+  
+ 
+        tone-mapping="neutral" 
+        poster="poster.webp" 
+
         ref={modelViewerRef}
-        src={car} // تأكدي إن الملف هنا وبنفس الاسم
+        src={lambo}
+        ios-src={lamboo} 
         ar
         ar-modes="webxr scene-viewer quick-look"
+        ar-placement="floor"
+        ar-scale="auto"
+        // style={{ width: '100%', height: '100vh', backgroundColor: '#1a1a1a' }}
+        scale="3000 3000 3000"
+        // scale="200 200 200" 
+        shadow-intensity="2"
+        exposure="1.5"
+        environment-image="neutral"
         camera-controls
-        shadow-intensity="1"
-        style={{ width: '100%', height: '100%', backgroundColor: '#1a1a1a' }} // خلفية غامقة مؤقتاً
+        auto-rotate
+        camera-orbit="0deg 75deg 3m"
+        className="scene-viewer"
       >
-        <div className="ar-controls-bottom">
-          <div className="color-configurator">
-            <h3>Exterior Color</h3>
-            <div className="color-swatches-grid">
+        <button slot="ar-button" className="scene-ar-button">
+          View in Your Space
+        </button>
+
+        <div className="scene-overlay">
+          <div className="scene-configurator-card">
+            <div className="scene-configurator-header">
+              <p className="scene-configurator-title">Mercedes Configurator</p>
+              <p className={`scene-configurator-status ${isModelReady ? "is-ready" : "is-loading"}`}>
+                {isModelReady ? "Ready" : "Loading..."}
+              </p>
+            </div>
+
+            <div className="scene-swatches">
               {availableColors.map((color) => (
                 <button
                   key={color.name}
-                  className={`color-swatch-btn ${selectedColor.name === color.name ? 'active' : ''}`}
+                  onClick={() => applyCarPaintColor(color)}
+                  className={`scene-swatch ${selectedColor.name === color.name ? "active" : ""}`}
                   style={{ backgroundColor: color.hex }}
-                  onClick={() => changeCarColor(color)}
                 />
               ))}
             </div>
-            <div className="selected-color-name">Color: {selectedColor.name}</div>
-          </div>
-
-          <div className="action-buttons-bar">
-            <button className="hm-action-btn">
-              Dimensions (1:1)
-            </button>
-            <button className="hm-action-btn main-action">
-              Start AR View
-            </button>
+            <p className="selected-color-name" style={{color: '#fff', fontSize: '12px', marginTop: '8px', textAlign: 'center'}}>
+              {selectedColor.name}
+            </p>
           </div>
         </div>
       </model-viewer>
