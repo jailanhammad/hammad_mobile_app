@@ -282,6 +282,29 @@ model-viewer:not(:defined) > .scene-ar-button {
   touch-action: manipulation;
 }
 
+.scene-exit-btn {
+  position: absolute;
+  top: 40px; 
+  left: 20px;
+  z-index: 10001; 
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.5); 
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scene-exit-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
 
 
 

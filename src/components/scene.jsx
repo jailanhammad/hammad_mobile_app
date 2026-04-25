@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./scene.css";
+import { NavLink } from "react-router-dom"; 
 
-import lambo from "../assets/ar/lambo.glb";
-import lamboo from "../assets/ar/lambo.usdz";
+import car from "../assets/ar/car.glb";
+import carr from "../assets/ar/car.usdz";
 
 
 const Scene = () => {
@@ -48,7 +49,14 @@ const Scene = () => {
   return (
     <div className="scene-container">
 
-
+<NavLink to="/ar_view" className="nav-item" end>
+<button className="scene-exit-btn" onClick={() => window.history.back()}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    {/* <span>Back</span> */}
+</button>
+</NavLink>
 
       <model-viewer
 
@@ -58,8 +66,8 @@ const Scene = () => {
         poster="poster.webp" 
 
         ref={modelViewerRef}
-        src={lambo}
-        ios-src={lamboo} 
+        src={car}
+        ios-src={carr} 
         ar
         ar-modes="webxr scene-viewer quick-look"
         ar-placement="floor"
