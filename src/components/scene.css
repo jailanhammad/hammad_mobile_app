@@ -379,11 +379,10 @@ model-viewer:not(:defined) > .scene-ar-button {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.engine-active .engine-icon {
-  background: #fff;
-  color: #b22222;
-  border-color: #fff;
-  animation: pulse-red 2s infinite;
+.engine-active {
+  background: #e11c24 !important;
+  border-color: #ff4d4d !important;
+  box-shadow: 0 0 15px rgba(225, 28, 36, 0.4);
 }
 
 @keyframes pulse-red {
@@ -395,31 +394,48 @@ model-viewer:not(:defined) > .scene-ar-button {
 .engine-start-button:active {
   transform: scale(0.95);
 }
+
 .two-buttons {
   position: absolute;
-  top: 40px; 
+  top: 40px;
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between; 
-  align-items: center; 
-  box-sizing: border-box;
+  justify-content: center;
   gap: 120px;
+  align-items: center;
+  box-sizing: border-box;
   z-index: 1000;
-}
+  
+  }
 
-.scene-exit-btn, 
-.engine-start-button {
-  position: relative !important; 
+  .scene-exit-btn,
+  .engine-start-button {
+  position: relative !important;
   top: auto !important;
   left: auto !important;
   margin: 0 !important;
-  width: auto !important; 
-}
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  
+  }
 
-.engine-start-button {
-  height: 45px;
-  padding: 0 15px;
-  font-size: 11px;
-  right: 5%;
-}
+  .engine-start-button {
+  width: 50% !important; 
+  height: 48px;
+  padding: 0 24px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px; 
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+
+  }

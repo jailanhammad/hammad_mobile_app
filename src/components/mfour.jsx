@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import "./mfour.css";
+import "./scene.css";
 import { NavLink } from "react-router-dom"; 
 
 import bmw from "../assets/ar/bmw.glb";
 import bmww from "../assets/ar/bmw.usdz";
 import engineSound from "../assets/engine.mp3"; 
+import back from "../assets/ar/back.svg";
 
 const Mfour = () => {
 
@@ -82,32 +83,25 @@ const audioRef = useRef(new Audio(engineSound));
 
     <div className="scene-container">
 
-      <div className="two-buttons">
 
-      <NavLink to="/ar_view" className="nav-item" end>
+<div className="two-buttons">
+
+<NavLink to="/ar_view"  end>
 <button className="scene-exit-btn" onClick={() => window.history.back()}>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M19 12H5M12 19l-7-7 7-7"/>
-    </svg>
-    {/* <span>Back</span> */}
+  <img src={back} alt="back-icon" />
 </button>
 </NavLink>
 
-
-
-<button 
-  onClick={toggleEngine}
-  className={`engine-start-button ${isEngineOn ? "engine-active" : ""}`}
->
-  <div className="engine-icon-only">
-    {isEngineOn ? "STOP ENGINE" : "START ENGINE"}
-  </div>
+<button
+onClick={toggleEngine}
+className={`engine-start-button ${isEngineOn ? "engine-active" : ""}`}>
+<div className="engine-icon-only">
+{isEngineOn ? "STOP ENGINE" : "START ENGINE"}
+</div>
 </button>
 
+</div>
 
-      </div>
-
-    
 
       <model-viewer
 
