@@ -1,43 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import "./scene.css";
+import "./mfour.css";
 import { NavLink } from "react-router-dom"; 
 
-import car from "../assets/ar/car.glb";
-import carr from "../assets/ar/car.usdz";
-import engineSound from "../assets/engine.mp3"; 
 
-const Scene = () => {
-
-const audioRef = useRef(new Audio(engineSound));
-  const [isEngineOn, setIsEngineOn] = useState(false);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-  
-    const handleEnded = () => setIsEngineOn(false);
-  
-    audio.addEventListener("ended", handleEnded);
-    
-    return () => {
-      audio.removeEventListener("ended", handleEnded);
-    };
-  }, []);
-
-  const toggleEngine = () => {
-    if (isEngineOn) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0; 
-    } else {
-      audioRef.current.play().catch(error => {
-        console.log("Audio playback failed:", error);
-      });
-      
-      audioRef.current.loop = false; 
-    }
-    setIsEngineOn(!isEngineOn);
-  };
-
-
+const Mfour = () => {
   const modelViewerRef = useRef(null);
   const [isModelReady, setIsModelReady] = useState(false);
   const [selectedColor, setSelectedColor] = useState({
@@ -78,14 +44,9 @@ const audioRef = useRef(new Audio(engineSound));
   };
 
   return (
-
-    <>
-
     <div className="scene-container">
 
-      <div className="two-buttons">
-
-      <NavLink to="/ar_view" className="nav-item" end>
+<NavLink to="/ar_view" className="nav-item" end>
 <button className="scene-exit-btn" onClick={() => window.history.back()}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -94,58 +55,20 @@ const audioRef = useRef(new Audio(engineSound));
 </button>
 </NavLink>
 
-
-
-<button 
-  onClick={toggleEngine}
-  className={`engine-start-button ${isEngineOn ? "engine-active" : ""}`}
+<model-viewer
+  src="../assets/ar/bmw.glb"
+  ios-src="../assets/ar/bmw.usdz"
+  ar
+  ar-modes="webxr scene-viewer quick-look"
+  ar-placement="floor"
+  camera-controls
+  touch-action="pan-y"
+  shadow-intensity="1"
+  environment-image="neutral"
+  exposure="1"
+  className="scene-viewer"
+  style={{ width: '100%', height: '100%' }}
 >
-  <div className="engine-icon-only">
-    {isEngineOn ? "STOP ENGINE" : "START ENGINE"}
-  </div>
-</button>
-
-
-      </div>
-
-    
-
-      <model-viewer
-
-  
- 
-        tone-mapping="neutral" 
-        poster="poster.webp" 
-
-        ref={modelViewerRef}
-        src={car}
-        ios-src={carr} 
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        ar-placement="floor"
-        ar-scale="auto"
-        // style={{ width: '100%', height: '100vh', backgroundColor: '#1a1a1a' }}
-        scale="3000 3000 3000"
-        // scale="200 200 200" 
-        shadow-intensity="2"
-        exposure="1.5"
-        environment-image="neutral"
-        camera-controls
-        auto-rotate
-        camera-orbit="0deg 75deg 3m"
-        className="scene-viewer"
-      >
-
-      <button 
-          className="hotspot" 
-          slot="hotspot-front" 
-          data-position="0.4m 0.8m 1.2m" 
-          data-normal="0m 0m 1m" 
-        >
-          <div className="hotspot-annotation">Mercedes Glc200</div>
-      </button>
-
-
         <button slot="ar-button" className="scene-ar-button">
           View in Your Space
         </button>
@@ -172,18 +95,11 @@ const audioRef = useRef(new Audio(engineSound));
             <p className="selected-color-name" style={{color: '#fff', fontSize: '12px', marginTop: '8px', textAlign: 'center'}}>
               {selectedColor.name}
             </p>
-
-
           </div>
         </div>
-
-
       </model-viewer>
     </div>
-
-    </>
-
   );
 };
 
-export default Scene;
+export default Mfour;

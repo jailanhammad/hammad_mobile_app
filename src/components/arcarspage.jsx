@@ -6,7 +6,7 @@ const ArCars = () => {
 
     const cars = [
         { id: 1, brand: 'PREMIUM', model: 'Mercedes GLC' , path: '/scene' },
-        { id: 2, brand: 'LUXURY', model: 'BMW M4' },
+        { id: 2, brand: 'LUXURY', model: 'BMW M4', path: '/m4' },
         { id: 3, brand: 'SPORT', model: 'Porsche 911' },
 
     ];

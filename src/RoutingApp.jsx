@@ -23,6 +23,7 @@ import ArExperience from "./pages/arexperience";
 import CarPage from "./pages/carpage";
 import Scene from "./components/scene";
 import SecondAr from "./pages/secondarpage";
+import Mfour from "./components/mfour";
 
 const RoutingApp = () => {
     const [loading, setLoading] = useState(true);
@@ -62,6 +63,7 @@ const RoutingApp = () => {
 
                         <Route path="/carpage" element={<CarPage />} />
                         <Route path="/scene" element={<Scene />} />
+                        <Route path="/m4" element={<Mfour />} />
 
 
                     </Routes>
