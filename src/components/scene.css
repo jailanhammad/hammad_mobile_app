@@ -162,12 +162,12 @@ model-viewer {
 
 .scene-ar-button {
   position: absolute; 
-  left: 50%;
+  left: 22.5%;
   width: 200px;
   height: 60px;
   z-index: 20000; 
   border: none;
-  /* padding: 10px 20px; */
+  padding: 10px 20px;
   border-radius: 16px;
   background: linear-gradient(135deg, #ed1c24 0%, #9b0e13 100%);
   color: #fff;

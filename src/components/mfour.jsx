@@ -2,8 +2,42 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./mfour.css";
 import { NavLink } from "react-router-dom"; 
 
+import bmw from "../assets/ar/bmw.glb";
+import bmww from "../assets/ar/bmw.usdz";
+import engineSound from "../assets/engine.mp3"; 
 
 const Mfour = () => {
+
+const audioRef = useRef(new Audio(engineSound));
+  const [isEngineOn, setIsEngineOn] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+  
+    const handleEnded = () => setIsEngineOn(false);
+  
+    audio.addEventListener("ended", handleEnded);
+    
+    return () => {
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
+  const toggleEngine = () => {
+    if (isEngineOn) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0; 
+    } else {
+      audioRef.current.play().catch(error => {
+        console.log("Audio playback failed:", error);
+      });
+      
+      audioRef.current.loop = false; 
+    }
+    setIsEngineOn(!isEngineOn);
+  };
+
+
   const modelViewerRef = useRef(null);
   const [isModelReady, setIsModelReady] = useState(false);
   const [selectedColor, setSelectedColor] = useState({
@@ -17,8 +51,7 @@ const Mfour = () => {
     { name: "Candy Red", hex: "#8B0000", gl: [0.5, 0.0, 0.0, 1] },
     { name: "Metallic Blue", hex: "#001F3F", gl: [0.0, 0.1, 0.3, 1] },
     { name: "Pearl White", hex: "#F5F5F5", gl: [0.95, 0.95, 0.95, 1] },
-    { name: "Silver Arrow", hex: "#C0C0C0", gl: [0.75, 0.75, 0.75, 1] }
-  ], []);
+    { name: "Gunmetal Grey", hex: "#2C2C2C", gl: [0.17, 0.17, 0.17, 1] }  ], []);
 
   useEffect(() => {
     const mv = modelViewerRef.current;
@@ -44,9 +77,14 @@ const Mfour = () => {
   };
 
   return (
+
+    <>
+
     <div className="scene-container">
 
-<NavLink to="/ar_view" className="nav-item" end>
+      <div className="two-buttons">
+
+      <NavLink to="/ar_view" className="nav-item" end>
 <button className="scene-exit-btn" onClick={() => window.history.back()}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -55,20 +93,58 @@ const Mfour = () => {
 </button>
 </NavLink>
 
-<model-viewer
-  src="../assets/ar/bmw.glb"
-  ios-src="../assets/ar/bmw.usdz"
-  ar
-  ar-modes="webxr scene-viewer quick-look"
-  ar-placement="floor"
-  camera-controls
-  touch-action="pan-y"
-  shadow-intensity="1"
-  environment-image="neutral"
-  exposure="1"
-  className="scene-viewer"
-  style={{ width: '100%', height: '100%' }}
+
+
+<button 
+  onClick={toggleEngine}
+  className={`engine-start-button ${isEngineOn ? "engine-active" : ""}`}
 >
+  <div className="engine-icon-only">
+    {isEngineOn ? "STOP ENGINE" : "START ENGINE"}
+  </div>
+</button>
+
+
+      </div>
+
+    
+
+      <model-viewer
+
+  
+ 
+        tone-mapping="neutral" 
+        poster="poster.webp" 
+
+        ref={modelViewerRef}
+        src={bmw}
+        ios-src={bmww} 
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        ar-placement="floor"
+        ar-scale="auto"
+        // style={{ width: '100%', height: '100vh', backgroundColor: '#1a1a1a' }}
+        scale="3000 3000 3000"
+        // scale="200 200 200" 
+        shadow-intensity="2"
+        exposure="1.5"
+        environment-image="neutral"
+        camera-controls
+        auto-rotate
+        camera-orbit="0deg 75deg 3m"
+        className="scene-viewer"
+      >
+
+      <button 
+          className="hotspot" 
+          slot="hotspot-front" 
+          data-position="0.4m 0.8m 1.2m" 
+          data-normal="0m 0m 1m" 
+        >
+          <div className="hotspot-annotation">BMW M4 GTS</div>
+      </button>
+
+
         <button slot="ar-button" className="scene-ar-button">
           View in Your Space
         </button>
@@ -95,10 +171,17 @@ const Mfour = () => {
             <p className="selected-color-name" style={{color: '#fff', fontSize: '12px', marginTop: '8px', textAlign: 'center'}}>
               {selectedColor.name}
             </p>
+
+
           </div>
         </div>
+
+
       </model-viewer>
     </div>
+
+    </>
+
   );
 };
 

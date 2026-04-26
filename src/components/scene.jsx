@@ -51,8 +51,7 @@ const audioRef = useRef(new Audio(engineSound));
     { name: "Candy Red", hex: "#8B0000", gl: [0.5, 0.0, 0.0, 1] },
     { name: "Metallic Blue", hex: "#001F3F", gl: [0.0, 0.1, 0.3, 1] },
     { name: "Pearl White", hex: "#F5F5F5", gl: [0.95, 0.95, 0.95, 1] },
-    { name: "Silver Arrow", hex: "#C0C0C0", gl: [0.75, 0.75, 0.75, 1] }
-  ], []);
+    { name: "Gunmetal Grey", hex: "#2C2C2C", gl: [0.17, 0.17, 0.17, 1] }  ], []);
 
   useEffect(() => {
     const mv = modelViewerRef.current;

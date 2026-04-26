@@ -162,17 +162,15 @@ button[slot="ar-button"] {
   
   .scene-ar-button {
     position: absolute; 
-    left: 50%;
+    left: 22.5%;
     width: 200px;
     height: 60px;
-    transform: translateX(-50%);
     z-index: 20000; 
     border: none;
     padding: 10px 20px;
     border-radius: 16px;
     background: linear-gradient(135deg, #ed1c24 0%, #9b0e13 100%);
     color: #fff;
-    display: block !important;
   }
   
   model-viewer:not(:defined) > .scene-ar-button {
@@ -289,3 +287,139 @@ button[slot="ar-button"] {
     transform: scale(1.05);
   }
   
+  
+  
+  .hotspot {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .hotspot-annotation {
+    visibility: hidden; 
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    color: #fff;
+    display: block;
+    font-family: Futura, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    left: calc(100% + 10px);
+    max-width: 150px;
+    padding: 8px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: max-content;
+  }
+  
+  .hotspot:focus .hotspot-annotation,
+  .hotspot:active .hotspot-annotation {
+    visibility: visible;
+  }
+  
+  .hotspot::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+  
+  .engine-start-button {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  }
+  
+  .engine-icon {
+    width: 32px;
+    height: 32px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    border: 2px solid #444;
+    transition: 0.4s;
+  }
+  
+  .engine-active {
+    background: linear-gradient(145deg, #8b0000, #b22222);
+    box-shadow: 0 0 20px rgba(178, 34, 34, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .engine-active .engine-icon {
+    background: #fff;
+    color: #b22222;
+    border-color: #fff;
+    animation: pulse-red 2s infinite;
+  }
+  
+  @keyframes pulse-red {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  }
+  
+  .engine-start-button:active {
+    transform: scale(0.95);
+  }
+  .two-buttons {
+    position: absolute;
+    top: 40px; 
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    box-sizing: border-box;
+    gap: 120px;
+    z-index: 1000;
+  }
+  
+  .scene-exit-btn, 
+  .engine-start-button {
+    position: relative !important; 
+    top: auto !important;
+    left: auto !important;
+    margin: 0 !important;
+    width: auto !important; 
+  }
+  
+  .engine-start-button {
+    height: 45px;
+    padding: 0 15px;
+    font-size: 11px;
+    right: 5%;
+  }  
