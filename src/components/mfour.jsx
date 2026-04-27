@@ -3,8 +3,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./scene.css";
 import { NavLink } from "react-router-dom"; 
 
-import bmw from "../assets/ar/bmw.glb";
-import bmww from "../assets/ar/bmw.usdz";
+import bmw from "../assets/ar/newbmw.glb";
+import bmww from "../assets/ar/newbmw.usdz";
 import engineSound from "../assets/engine.mp3"; 
 import back from "../assets/ar/back.svg";
 
