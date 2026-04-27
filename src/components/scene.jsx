@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./scene.css";
 import { NavLink } from "react-router-dom"; 
 
