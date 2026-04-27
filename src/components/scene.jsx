@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./scene.css";
 import { NavLink } from "react-router-dom"; 
 
-import car from "../assets/ar/newcar.glb";
+import car from "../assets/ar/car.glb";
 import carr from "../assets/ar/newcar.usdz";
 import back from "../assets/ar/back.svg";
 import engineSound from "../assets/engine.mp3"; 
