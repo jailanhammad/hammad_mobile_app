@@ -122,7 +122,7 @@ const Mfour = () => {
             data-position="0.4m 0.8m 1.2m" 
             data-normal="0m 0m 1m" 
           >
-            <div className="hotspot-annotation">Mercedes Glc200</div>
+            <div className="hotspot-annotation">BMW M4 GTS</div>
           </button>
 
           <button slot="ar-button" className="scene-ar-button">
@@ -132,7 +132,7 @@ const Mfour = () => {
           <div className="scene-overlay">
             <div className="scene-configurator-card">
               <div className="scene-configurator-header">
-                <p className="scene-configurator-title">Mercedes Configurator</p>
+                <p className="scene-configurator-title">BMW Configurator</p>
                 <p className={`scene-configurator-status ${isModelReady ? "is-ready" : "is-loading"}`}>
                   {isModelReady ? "Ready" : "Loading..."}
                 </p>
