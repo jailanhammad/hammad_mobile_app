@@ -1,11 +1,12 @@
-
 import React, { useState } from 'react';
 import { supabase } from '../supabase';
 import './sellcar.css'; 
-
-
+import { useTranslation } from 'react-i18next';
 
 const SellCar = () => {
+  const { i18n } = useTranslation();
+  const isAr = i18n.language === 'ar';
+
   const [formData, setFormData] = useState({
     make: '',
     model: '',
@@ -17,45 +18,50 @@ const SellCar = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const sellingSteps = [
+    { 
+      number: 1, 
+      title: isAr ? 'بيانات السيارة' : 'Vehicle Information', 
+      description: isAr ? 'قولنا تفاصيل عربيتك' : 'Tell us about your car' 
+    },
+    { 
+      number: 2, 
+      title: isAr ? 'ارفع الصور' : 'Upload Photos', 
+      description: isAr ? 'صور واضحة لكل الزوايا' : 'Share clear images' 
+    },
+    { 
+      number: 3, 
+      title: isAr ? 'استلم عرضنا' : 'Get Your Offer', 
+      description: isAr ? 'هنوصلك بأفضل سعر' : 'Receive instant quote' 
+    },
+  ];
+
   const handleConfirm = async (e) => {
     e.preventDefault();
-    
-    const { error } = await supabase
-      .from('hammad_car_listing')
-      .insert([formData]);
+    const { error } = await supabase.from('hammad_car_listing').insert([formData]);
 
     if (error) {
-      alert("حدث خطأ في قاعدة البيانات: " + error.message);
+      alert(isAr ? "حدث خطأ: " + error.message : "Error: " + error.message);
       return;
     }
 
-    const phoneNumber = "201000444401"; 
-    const message = `طلب بيع جديد (Hammad Motors):
-- الماركة: ${formData.make}
-- الموديل: ${formData.model}
-- السنة: ${formData.year}
-- الكيلومترات: ${formData.mileage}`;
+    const message = isAr 
+      ? `طلب بيع جديد:\n- الماركة: ${formData.make}\n- الموديل: ${formData.model}`
+      : `New Sell Request:\n- Make: ${formData.make}\n- Model: ${formData.model}`;
 
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=201000444401&text=${encodeURIComponent(message)}`, '_blank');
   };
 
-  const sellingSteps = [
-    { number: 1, title: 'Vehicle Information', description: 'Tell us about your car' },
-    { number: 2, title: 'Upload Photos', description: 'Share clear images' },
-    { number: 3, title: 'Get Your Offer', description: 'Receive instant quote' },
-  ];
-
   return (
-    <div className="sell-car-container">
+    <div className={`sell-car-container ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
       <div className="sell-car-header-card">
-        <h2 className="sell-car-main-title">Sell Your Car Today</h2>
+        <h2 className="sell-car-main-title">
+          {isAr ? 'بيع عربيتك النهاردة' : 'Sell Your Car Today'}
+        </h2>
         <p className="sell-car-header-subtitle">
-          Get a fair market value for your vehicle in 3 easy steps
+          {isAr ? 'احصل على أفضل سعر في 3 خطوات' : 'Get a fair market value in 3 easy steps'}
         </p>
       </div>
-
-
 
       <div className="sell-car-steps-list">
         {sellingSteps.map((step) => (
@@ -71,33 +77,30 @@ const SellCar = () => {
         ))}
       </div>
 
-
       <div className="car-info-form-card">
-        <h3 className="form-heading">Car Information</h3>
+        <h3 className="form-heading">{isAr ? 'بيانات السيارة' : 'Car Information'}</h3>
         <form onSubmit={handleConfirm} className="sell-actual-form">
           <div className="sell-input-group">
-            <label>Make</label>
-            <input name="make" placeholder="Enter make" onChange={handleChange} required />
+            <label>{isAr ? 'الماركة' : 'Make'}</label>
+            <input name="make" placeholder={isAr ? "أدخل الماركة" : "Enter make"} onChange={handleChange} required />
           </div>
           <div className="sell-input-group">
-            <label>Model</label>
-            <input name="model" placeholder="Enter model" onChange={handleChange} required />
+            <label>{isAr ? 'الموديل' : 'Model'}</label>
+            <input name="model" placeholder={isAr ? "أدخل الموديل" : "Enter model"} onChange={handleChange} required />
           </div>
           <div className="sell-input-group">
-            <label>Year</label>
-            <input name="year" placeholder="Enter year" onChange={handleChange} required />
+            <label>{isAr ? 'السنة' : 'Year'}</label>
+            <input name="year" placeholder={isAr ? "أدخل السنة" : "Enter year"} onChange={handleChange} required />
           </div>
           <div className="sell-input-group">
-            <label>Mileage</label>
-            <input name="mileage" placeholder="Enter mileage" onChange={handleChange} required />
+            <label>{isAr ? 'الكيلومترات' : 'Mileage'}</label>
+            <input name="mileage" placeholder={isAr ? "أدخل الكيلومترات" : "Enter mileage"} onChange={handleChange} required />
           </div>
           <button type="submit" className="sell-confirm-btn">
-            Confirm <span>&rsaquo;</span>
+            {isAr ? 'تأكيد' : 'Confirm'} <span>{isAr ? '‹' : '›'}</span>
           </button>
         </form>
       </div>
-
-   
     </div>
   );
 };
