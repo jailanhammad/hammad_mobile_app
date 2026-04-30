@@ -1,0 +1,83 @@
+.privacy-container-007 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #121212; 
+    font-family: "Poppins";
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.privacy-card-007 {
+    background-color: #1e1e1e;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.14); 
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid #444;
+}
+
+.privacy-icon-007 {
+    font-size: 60px;
+    color: #ff0000;
+    margin-bottom: 20px;
+}
+
+.privacy-title-007 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.privacy-text-007 {
+    font-size: 15px;
+    color: #cccccc;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.privacy-button-007 {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+    width: 100%;
+}
+
+.privacy-button-007:hover {
+    background-color: #d40000;
+    transform: scale(1.03); 
+}
+.back-button-007 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #ff0000;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+}
+
+.back-button-007:hover {
+    background: #ff0000;
+    color: white;
+}

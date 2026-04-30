@@ -21,7 +21,7 @@ const SettingsPage = ({ userId }) => {
           editProfile: "Profile",
           notifications: "Notifications",
           appLanguage: "Language",
-          preferences: "Preferences",
+          preferences: "Privacy Policy",
           signOut: "Sign Out",
           contactSupport: "Contact Support"
         }
@@ -32,7 +32,7 @@ const SettingsPage = ({ userId }) => {
           editProfile: " الملف الشخصي",
           notifications: "الإشعارات",
           appLanguage: "اللغة",
-          preferences: "التفضيلات",
+          preferences: "سياسة الخصوصية",
           signOut: "تسجيل الخروج",
           contactSupport: "تواصل مع الدعم"
         }
@@ -124,7 +124,7 @@ const SettingsPage = ({ userId }) => {
           </div>
         </div>
 
-        <NavLink to="/vehicles" className="underline" end>
+        <NavLink to="/privacy" className="underline" end>
         <div className="settings-item">
           <div className="item-left">
             <Heart className="icon-gold" size={20} />

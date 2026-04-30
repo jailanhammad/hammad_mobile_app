@@ -24,6 +24,7 @@ import CarPage from "./pages/carpage";
 import Scene from "./components/scene";
 import SecondAr from "./pages/secondarpage";
 import Mfour from "./components/mfour";
+import Privacy from "./components/privacy";
 
 const RoutingApp = () => {
     const [loading, setLoading] = useState(true);
@@ -63,6 +64,7 @@ const RoutingApp = () => {
                         <Route path="/carpage" element={<CarPage />} />
                         <Route path="/scene" element={<Scene />} />
                         <Route path="/m4" element={<Mfour />} />
+                        <Route path="/privacy" element={<Privacy />} />
 
 
                     </Routes>

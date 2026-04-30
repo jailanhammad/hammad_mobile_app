@@ -1,6 +1,5 @@
 
 import React, { useState } from "react";
-import "@google/model-viewer";
 import "./App.css";
 import Preloader from "./components/preloader"; 
 import IntroScreen from "./pages/intro";

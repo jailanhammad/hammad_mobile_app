@@ -3,10 +3,8 @@ import './intro.css';
 import logo from '../assets/login/logo.svg';
 import carback from '../assets/home/carback.png';
 import { NavLink } from "react-router-dom"; 
-import { useTranslation, Trans } from 'react-i18next';
 
 const IntroScreen = () => {
-  const { t } = useTranslation();
   return (
 
     <div className='home'>
@@ -22,22 +20,18 @@ const IntroScreen = () => {
 
         <div className="text-section">
           <h1 className="title">
-            <Trans
-              i18nKey="intro.title"
-              values={{ highlight: t('intro.highlight') }}
-              components={{ 1: <span /> }}
-            >
               PERFORMANCE MEETS <span>LUXURY</span>
-            </Trans>
           </h1>
-          <p className="subtitle">{t('intro.subtitle')}</p>
+          <p className="subtitle">
+          Find your perfect car, explore advanced features, and start your driving journey today.
+          </p>
         </div>
 
 
 
         <NavLink to="/discover" className="explore-btn-2" >
         <button className="explore-btn">
-            {t('intro.explore')}
+        Explore
           </button>
         </NavLink>
 
