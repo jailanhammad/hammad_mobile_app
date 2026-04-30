@@ -2,9 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './mostsold.css';
 import { NavLink } from "react-router-dom"; 
+import { useTranslation } from 'react-i18next';
 
-const Mostsold = ({ lang = 'en' }) => {
+const Mostsold = () => { 
   const [soldCars, setSoldCars] = useState([]);
+  
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language || 'en';
+  const isAr = currentLang === 'ar';
+
+  useEffect(() => {
+    const translations = {
+      en: {
+        mostSold: {
+          title: "Most Sold",
+          viewAll: "View All"
+        }
+      },
+      ar: {
+        mostSold: {
+          title: "الأكثر مبيعاً",
+          viewAll: "عرض الكل"
+        }
+      }
+    };
+
+    Object.keys(translations).forEach((l) => {
+      i18n.addResourceBundle(l, 'translation', translations[l], true, true);
+    });
+  }, [i18n]);
 
   useEffect(() => {
     const fetchSoldCars = async () => {
@@ -18,18 +44,16 @@ const Mostsold = ({ lang = 'en' }) => {
     fetchSoldCars();
   }, []);
 
-  const isAr = lang === 'ar';
-
   return (
-    <section className={`pop-section ${isAr ? 'rtl' : 'ltr'}`}>
+    <section className={`pop-section ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
       <div className="pop-header">
         <div className="pop-title-box">
           <h2 className="pop-title">
-            {isAr ? 'الأكثر مبيعاً' : 'Most Sold'}
+            {t('mostSold.title')}
           </h2>
         </div>
         <a href="#all" className="view-link">
-            {isAr ? 'عرض الكل' : 'View All'} <span>{isAr ? '‹' : '›'}</span>
+            {t('mostSold.viewAll')} <span>{isAr ? '‹' : '›'}</span>
         </a>
       </div>
 
@@ -52,18 +76,18 @@ const Mostsold = ({ lang = 'en' }) => {
               <div className="p-row">
                 <h3>{isAr ? car.name_ar : car.name_en}</h3>
 
-            <NavLink to="/carpage" className="brand-navlink" end>
-            <div className="arrow-icon">
-            <span className="arrow-icon">{isAr ? '←' : '→'}</span>
-            </div>
-            </NavLink>
+                <NavLink to="/carpage" className="brand-navlink" end>
+                  <div className="arrow-icon">
+                    <span className="arrow-icon">{isAr ? '←' : '→'}</span>
+                  </div>
+                </NavLink>
 
               </div>
               <p className="p-year">{car.year}</p>
               <p className="p-specs">{isAr ? car.specs_ar : car.specs_en}</p>
               <div className="p-price-row">
                 <span className="p-price">{isAr ? car.price_ar : car.price_en}</span>
-                {car.monthly_price_en && (
+                {(car.monthly_price_en || car.monthly_price_ar) && (
                   <span className="p-month">{isAr ? car.monthly_price_ar : car.monthly_price_en}</span>
                 )}
               </div>
