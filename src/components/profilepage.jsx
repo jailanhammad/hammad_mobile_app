@@ -1,12 +1,14 @@
-
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import VehicleCard from './vehiclecard'; 
 import './profilepage.css';
 import like from '../assets/home/love.svg';
+import { useTranslation } from 'react-i18next';
 
-const ProfilePage = ({ lang = 'en' }) => {
-    const isAr = lang === 'ar';
+const ProfilePage = () => {
+    const { i18n } = useTranslation();
+    const currentLang = i18n.language || 'en';
+    const isAr = currentLang === 'ar';
 
     const [favorites, setFavorites] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -50,7 +52,7 @@ const ProfilePage = ({ lang = 'en' }) => {
 
     return (
         <>
-            <div className="profile-container">
+            <div className="profile-container" dir={isAr ? 'rtl' : 'ltr'}>
                 <div className="account-summary-card">
                     <div className="identity-section">
                         <div className="identity-section__avatar">{userData.initials}</div>
@@ -70,7 +72,7 @@ const ProfilePage = ({ lang = 'en' }) => {
                 </div>
             </div>
 
-            <div className={`profile-container-2 ${isAr ? 'rtl' : 'ltr'}`}>
+            <div className={`profile-container-2 ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
                 <div className="saved-cars-header">
                     <div className="header-left">
                         <span className="heart-icon">
@@ -79,24 +81,24 @@ const ProfilePage = ({ lang = 'en' }) => {
                         <h2>{isAr ? 'العربيات المحفوظة' : 'Saved Cars'}</h2>
                     </div>
                     <button className="view-all-btn">
-                        {isAr ? 'عرض الكل' : 'View All'} <span>›</span>
+                        {isAr ? 'عرض الكل' : 'View All'} <span className="arrow-flip">{isAr ? '‹' : '›'}</span>
                     </button>
                 </div>
 
                 <div className="favorites-list">
                     {loading ? (
-                        <p className="status-text">Loading...</p>
+                        <p className="status-text">{isAr ? 'جاري التحميل...' : 'Loading...'}</p>
                     ) : favorites.length > 0 ? (
                         favorites.map(vehicle => (
                             <VehicleCard 
                                 key={vehicle.id} 
                                 vehicle={vehicle} 
-                                lang={lang} 
+                                lang={currentLang} 
                                 onToggle={handleFavoriteToggle}
                             />
                         ))
                     ) : (
-                        <p className="status-text">{isAr ? 'لا توجد مفضلات' : 'No favorites yet'}</p>
+                        <p className="status-text">{isAr ? 'لا توجد مفضلات حالياً' : 'No favorites yet'}</p>
                     )}
                 </div>
             </div>
