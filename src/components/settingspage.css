@@ -25,7 +25,10 @@
     cursor: pointer;
     transition: 0.2s;
   }
-  
+  .underline{
+    text-decoration: none;
+    color: white;
+  }
   .item-left {
     display: flex;
     align-items: center;

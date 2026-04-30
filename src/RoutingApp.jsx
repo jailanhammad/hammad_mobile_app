@@ -57,7 +57,6 @@ const RoutingApp = () => {
                         <Route path="/services" element={<Services />} />
                         <Route path="/installments" element={<Installments />} />
                         <Route path="/settings" element={<Settings />} />
-                        <Route path="/settings" element={<Settings />} />
                         <Route path="/ar_view" element={<ArExperience />} />
                         <Route path="/choose-car" element={<SecondAr />} />
 
