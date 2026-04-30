@@ -1,9 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './review.css';
+import { useTranslation } from 'react-i18next';
 
-const Review = ({ lang = 'en' }) => {
+const Review = () => { 
   const [reviews, setReviews] = useState([]);
+
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language || 'en';
+  const isAr = currentLang === 'ar';
+
+  useEffect(() => {
+    const translations = {
+      en: {
+        reviews: {
+          title: "Customer Reviews",
+          viewAll: "View All"
+        }
+      },
+      ar: {
+        reviews: {
+          title: "آراء العملاء",
+          viewAll: "عرض الكل"
+        }
+      }
+    };
+
+    Object.keys(translations).forEach((l) => {
+      i18n.addResourceBundle(l, 'translation', translations[l], true, true);
+    });
+  }, [i18n]);
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -18,16 +44,14 @@ const Review = ({ lang = 'en' }) => {
     fetchReviews();
   }, []);
 
-  const isAr = lang === 'ar';
-
   return (
-    <section className={`rev-section ${isAr ? 'rtl' : 'ltr'}`}>
+    <section className={`rev-section ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
       <div className="rev-header">
         <h2 className="rev-title">
-          {isAr ? 'آراء العملاء' : 'Customer Reviews'}
+          {t('reviews.title')}
         </h2>
         <a href="#all" className="view-link">
-          {isAr ? 'عرض الكل' : 'View All'} <span>{isAr ? '‹' : '›'}</span>
+          {t('reviews.viewAll')} <span>{isAr ? '‹' : '›'}</span>
         </a>
       </div>
 
