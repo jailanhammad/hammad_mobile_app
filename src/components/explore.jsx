@@ -2,12 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './explore.css';
 import { NavLink } from "react-router-dom"; 
+import { useTranslation } from 'react-i18next';
 
-
-const ExploreSection = ({ lang = 'en'  }) => {
-
+const ExploreSection = () => {
   const [cars, setCars] = useState([]);
-  const isAr = lang === 'ar';
+  
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language || 'en';
+  const isAr = currentLang === 'ar';
+
+  useEffect(() => {
+    const translations = {
+      en: {
+        explore: {
+          vehicles: "Vehicles",
+          viewAll: "View All"
+        }
+      },
+      ar: {
+        explore: {
+          vehicles: "السيارات",
+          viewAll: "عرض الكل"
+        }
+      }
+    };
+
+    Object.keys(translations).forEach((l) => {
+      i18n.addResourceBundle(l, 'translation', translations[l], true, true);
+    });
+  }, [i18n]);
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -21,20 +44,17 @@ const ExploreSection = ({ lang = 'en'  }) => {
     fetchCars();
   }, []);
 
-
-
   return (
-    <section className={`exp-section ${isAr ? 'rtl' : 'ltr'}`}>
+    <section className={`exp-section ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
       <div className="exp-header">
         <h2 className="exp-title">
-            {isAr ? 'السيارات' : 'Vehicles'}
+            {t('explore.vehicles')}
         </h2>
         <NavLink to="/vehicles" className="view-all">
-        <a href="#all" className="view-all">
-            {isAr ? 'عرض الكل' : 'View All'} <span>{isAr ? '‹' : '›'}</span>
-        </a>
+          <div className="view-all">
+            {t('explore.viewAll')} <span>{isAr ? '‹' : '›'}</span>
+          </div>
         </NavLink>
-
       </div>
 
       <div className="card-slider">
@@ -45,26 +65,23 @@ const ExploreSection = ({ lang = 'en'  }) => {
               <span className="type-tag">
                 {isAr ? car.type_tag_ar : car.type_tag_en}
               </span>
-
             </div>
 
             <div className="car-info">
               <div className="title-row">
                 <h3>{isAr ? car.name_ar : car.name_en}</h3>
 
-
-            <NavLink to="/carpage" className="brand-navlink" end>
-            <div className="arrow-icon">
-            <span className="arrow-icon">{isAr ? '←' : '→'}</span>
-            </div>
-            </NavLink>
-
+                <NavLink to="/carpage" className="brand-navlink" end>
+                  <div className="arrow-icon">
+                    <span className="arrow-icon">{isAr ? '←' : '→'}</span>
+                  </div>
+                </NavLink>
               </div>
               <p className="year">{car.year}</p>
               <p className="specs">{isAr ? car.specs_ar : car.specs_en}</p>
               <div className="price-row">
                 <span className="main-price">{isAr ? car.main_price_ar : car.main_price_en}</span>
-                {car.monthly_price_en && (
+                {(car.monthly_price_en || car.monthly_price_ar) && (
                   <span className="monthly">{isAr ? car.monthly_price_ar : car.monthly_price_en}</span>
                 )}
               </div>
