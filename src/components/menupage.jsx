@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabase'; 
 import './menupage.css';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-const MenuPage = ({ lang = 'en' }) => {
-
+const MenuPage = () => {
     const navigate = useNavigate(); 
     const [menuItems, setMenuItems] = useState([]);
     const [loading, setLoading] = useState(true);
-    const isAr = lang === 'ar';
+
+    const { i18n } = useTranslation();
+    const currentLang = i18n.language || 'en';
+    const isAr = currentLang === 'ar';
 
     useEffect(() => {
         const fetchMenu = async () => {
@@ -30,34 +33,29 @@ const MenuPage = ({ lang = 'en' }) => {
         fetchMenu();
     }, []);
 
-    if (loading) return <div className="loading-text">Loading...</div>;
-
+    if (loading) return <div className="loading-text">{isAr ? 'جاري التحميل...' : 'Loading...'}</div>;
 
     const handleNavigation = (slug) => {
         navigate(`/${slug}`); 
     };
 
     return (
-        <div className={`menu-page-container ${isAr ? 'dir-rtl' : 'dir-ltr'}`}>
+        <div className={`menu-page-container ${isAr ? 'dir-rtl' : 'dir-ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
             <h2 className="menu-title">{isAr ? 'القائمة' : 'Menu'}</h2>
             
-
-
             <div className="menu-items-border-box">
-            <div className="scrollable-content">
-                {menuItems.map((item) => (
-                    <button 
-                        key={item.id} 
-                        className="menu-custom-btn"
-                        onClick={() => handleNavigation(item.slug)}
-                    >
-                        {item.name_en}
-                    </button>
-                ))}
+                <div className="scrollable-content">
+                    {menuItems.map((item) => (
+                        <button 
+                            key={item.id} 
+                            className="menu-custom-btn"
+                            onClick={() => handleNavigation(item.slug)}
+                        >
+                            {isAr ? item.name_ar : item.name_en}
+                        </button>
+                    ))}
+                </div>
             </div>
-        </div>
-
-
         </div>
     );
 };
