@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './nav.css';
 import { NavLink } from "react-router-dom"; 
+import { useTranslation } from 'react-i18next';
+
 import homeIcon from '../assets/home/home.svg';
 import searchIcon from '../assets/home/search-2.svg';
 import carIcon from '../assets/home/car.svg';
 import profileIcon from '../assets/home/profile.svg';
 import menuIcon from '../assets/home/menu.svg';
 
-const Nav = ({ lang = 'en' }) => {
+const Nav = () => { 
     const [navLabels, setNavLabels] = useState(null);
+    
+    const { i18n } = useTranslation();
+    const currentLang = i18n.language || 'en';
+    const isAr = currentLang === 'ar';
 
     useEffect(() => {
         const fetchNav = async () => {
@@ -23,10 +29,9 @@ const Nav = ({ lang = 'en' }) => {
     }, []);
 
     if (!navLabels) return null;
-    const isAr = lang === 'ar';
 
     return (
-        <nav className={`nav-bar ${isAr ? 'rtl-nav' : 'ltr-nav'}`}>
+        <nav className={`nav-bar ${isAr ? 'rtl-nav' : 'ltr-nav'}`} dir={isAr ? 'rtl' : 'ltr'}>
             
             <NavLink to="/home" className="nav-item" end>
                 <span className="nav-icon"><img src={homeIcon} alt="home" /></span>
