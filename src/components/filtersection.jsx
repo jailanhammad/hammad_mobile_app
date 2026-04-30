@@ -1,13 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import './filtersection.css';
-import filters from '../assets/home/filters.svg';
 import VehicleCard from './vehiclecard';
+import { useTranslation } from 'react-i18next';
 
-const FilterSection = ({ lang = 'en' }) => {
+const FilterSection = () => { 
     const [categories, setCategories] = useState([]);
     const [vehicles, setVehicles] = useState([]); 
     const [activeTab, setActiveTab] = useState('all');
+
+    const { i18n } = useTranslation();
+    const currentLang = i18n.language || 'en';
+    const isAr = currentLang === 'ar';
+
+    useEffect(() => {
+        const translations = {
+            en: {
+                filter: {
+                    btn: "Filters",
+                    all: "All"
+                }
+            },
+            ar: {
+                filter: {
+                    btn: "فلتر",
+                    all: "الكل"
+                }
+            }
+        };
+
+        Object.keys(translations).forEach((l) => {
+            i18n.addResourceBundle(l, 'translation', translations[l], true, true);
+        });
+    }, [i18n]);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -29,21 +54,15 @@ const FilterSection = ({ lang = 'en' }) => {
         fetchVehicles();
     }, []);
 
-    const isAr = lang === 'ar';
-
     const filteredVehicles = activeTab === 'all' 
         ? vehicles 
         : vehicles.filter(v => v.category_name_en.toLowerCase() === activeTab.toLowerCase());
 
     return (
         <>
-            <div className={`filter-container ${isAr ? 'rtl' : 'ltr'}`}>
+            <div className={`filter-container ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
             <div className="scroll-wrapper">
-                <button className="filter-main-btn">
-                    <img src={filters} alt="filters-icon" />
-                    <span>{isAr ? 'فلتر' : 'Filters'}</span>
-                </button>
-
+    
 
                 {categories.map((cat) => (
                     <button 
@@ -57,10 +76,9 @@ const FilterSection = ({ lang = 'en' }) => {
             </div>
             </div>
 
-            <div className="vehicles-list-container">
+            <div className={`vehicles-list-container ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
                 {filteredVehicles.map((car) => (
-                    <VehicleCard key={car.id} vehicle={car} lang={lang} />
-
+                    <VehicleCard key={car.id} vehicle={car} lang={currentLang} />
                 ))}
             </div>
         </>
