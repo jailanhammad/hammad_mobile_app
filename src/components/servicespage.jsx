@@ -3,11 +3,15 @@ import { supabase } from '../supabase';
 import './servicespage.css';
 import serv from '../assets/home/service-hero.svg';
 import { NavLink } from "react-router-dom"; 
+import { useTranslation } from 'react-i18next';
 
-
-const ServicesPage = ({ lang = 'en' }) => {
+const ServicesPage = () => { 
     const [services, setServices] = useState([]);
   
+    const { i18n } = useTranslation();
+    const currentLang = i18n.language || 'en';
+    const isAr = currentLang === 'ar';
+
     useEffect(() => {
       const fetchServices = async () => {
         const { data, error } = await supabase.from('hammad_services').select('*');
@@ -27,40 +31,39 @@ const ServicesPage = ({ lang = 'en' }) => {
     };
   
     return (
-      <div className={`services-container ${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+      <div className={`services-container ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
         
-   <div className="hero-overlay-container">
-        <img src={serv} alt="hero" className='hero-bg-img'/>
-        
-        <div className="hero-content-on-top">
-          <h2 className="hero-title-text">
-            {lang === 'en' ? 'Get A Fair Price For Your Car' : 'احصل على سعر عادل لسيارتك'}
-          </h2>
-          <div className="hero-footer-row">
-            <span className="hero-red-tag">
-              {lang === 'en' ? 'Sell To Us Today' : 'بع لنا اليوم'}
-            </span>
-            <NavLink to="/sell" className="nav-item">
-            <button className="hero-action-btn">
-              {lang === 'en' ? 'Start' : 'ابدأ'} <span>→</span>
-            </button>
-            </NavLink>
-
-          </div>
+        <div className="hero-overlay-container">
+            <img src={serv} alt="hero" className='hero-bg-img'/>
+            
+            <div className="hero-content-on-top">
+              <h2 className="hero-title-text">
+                {isAr ? 'احصل على سعر عادل لسيارتك' : 'Get A Fair Price For Your Car'}
+              </h2>
+              <div className="hero-footer-row">
+                <span className="hero-red-tag">
+                  {isAr ? 'بع لنا اليوم' : 'Sell To Us Today'}
+                </span>
+                <NavLink to="/sell" className="nav-item">
+                    <button className="hero-action-btn">
+                      {isAr ? 'ابدأ' : 'Start'} <span className="arrow-flip">{isAr ? '←' : '→'}</span>
+                    </button>
+                </NavLink>
+              </div>
+            </div>
         </div>
-      </div>
   
         <h3 className="section-title-00">
-          {lang === 'en' ? 'Service Categories' : 'فئات الخدمات'}
+          {isAr ? 'فئات الخدمات' : 'Service Categories'}
         </h3>
   
         <div className="services-grid">
           {services.map((service) => (
             <div key={service.id} className="service-card">
               <div className="service-icon">{renderIcon(service.icon_name)}</div>
-              <h4>{lang === 'en' ? service.title_en : service.title_ar}</h4>
-              <p>{lang === 'en' ? service.desc_en : service.desc_ar}</p>
-              <div className="service-arrow">→</div>
+              <h4>{isAr ? service.title_ar : service.title_en}</h4>
+              <p>{isAr ? service.desc_ar : service.desc_en}</p>
+              <div className="service-arrow">{isAr ? '←' : '→'}</div>
             </div>
           ))}
         </div>
