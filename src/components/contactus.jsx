@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './contactus.css';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaPaperPlane } from 'react-icons/fa';
-import Galaxy from '../components/galaxy';
+import { useTranslation } from 'react-i18next';
 
-const ContactUs = ({ lang = 'en' }) => {
-    const isAr = lang === 'ar';
+const ContactUs = () => {
+    const { i18n } = useTranslation();
+    const isAr = i18n.language === 'ar';
+    
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [submitted, setSubmitted] = useState(false);
 
@@ -19,7 +21,7 @@ const ContactUs = ({ lang = 'en' }) => {
     };
 
     return (
-        <div className={`contact-page-container ${isAr ? 'rtl' : 'ltr'}`}>
+        <div className={`contact-page-container ${isAr ? 'rtl' : 'ltr'}`} dir={isAr ? 'rtl' : 'ltr'}>
     
             <div className="contact-content-wrapper">
                 <div className="contact-header">
@@ -27,8 +29,7 @@ const ContactUs = ({ lang = 'en' }) => {
                         {isAr ? 'تواصل مع' : 'Get in'} <span>{isAr ? 'الخبراء' : 'Touch'}</span>
                     </h1>
                     <div className="line-divider"></div>
-                    <span className="section-label">{isAr ? 'اتصل بنا' : 'CONTACT'}</span>
-
+                    <span className="section-label-0">{isAr ? 'اتصل بنا' : 'CONTACT'}</span>
                 </div>
 
                 <div className="contact-grid">
@@ -45,6 +46,8 @@ const ContactUs = ({ lang = 'en' }) => {
                                     <input 
                                         type="text" 
                                         name="name" 
+                                        value={formData.name}
+                                        onChange={handleInputChange}
                                         placeholder={isAr ? 'الاسم الكامل' : 'Full Name'} 
                                         required
                                     />
@@ -53,6 +56,8 @@ const ContactUs = ({ lang = 'en' }) => {
                                     <input 
                                         type="email" 
                                         name="email" 
+                                        value={formData.email}
+                                        onChange={handleInputChange}
                                         placeholder={isAr ? 'البريد الإلكتروني' : 'Email Address'} 
                                         required
                                     />
@@ -60,6 +65,8 @@ const ContactUs = ({ lang = 'en' }) => {
                                 <div className="input-group">
                                     <textarea 
                                         name="message" 
+                                        value={formData.message}
+                                        onChange={handleInputChange}
                                         placeholder={isAr ? 'رسالتك...' : 'Your Message...'} 
                                         rows="4"
                                         required
@@ -77,7 +84,7 @@ const ContactUs = ({ lang = 'en' }) => {
                             <FaMapMarkerAlt className="info-icon-red" />
                             <div>
                                 <h4>{isAr ? 'العنوان' : 'Our Location'}</h4>
-                                <p>{isAr ? '١٥ ش ابراهيم النجار، مصر الجديدة   ' : '15 Ibrahim El-Naggar St., Heliopolis'}</p>
+                                <p>{isAr ? '١٥ ش ابراهيم النجار، مصر الجديدة' : '15 Ibrahim El-Naggar St., Heliopolis'}</p>
                             </div>
                         </div>
                         
@@ -85,7 +92,7 @@ const ContactUs = ({ lang = 'en' }) => {
                             <FaPhoneAlt className="info-icon-red" />
                             <div>
                                 <h4>{isAr ? 'اتصل بنا' : 'Call Us'}</h4>
-                                <p>+20 01000444401</p>
+                                <p dir="ltr">+20 01000444401</p>
                             </div>
                         </div>
 
@@ -101,24 +108,18 @@ const ContactUs = ({ lang = 'en' }) => {
             </div>
 
             <div className="map-wrapper">
-
-                <iframe
-
-                title="location-map"
-
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.983968846387!2d31.3323062!3d30.1114406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145815d688417931%3A0x6a0860537827e69c!2sNozha%20St%2C%20El-Nozha%2C%20Heliopolis%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1690000000000!5m2!1sen!2seg"
-
-                width="100%"
-
-                height="180"
-
-                style={{ border: 0, borderRadius: '15px' }}
-
-                allowFullScreen=""
-
-                loading="lazy"
-
-                ></iframe>
+    <iframe
+    
+        title="hammad-motors-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.495688798003!2d31.346522475847998!3d30.108626415526466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145815de0d1b4313%3A0x298a65406d8b0f2b!2sHamad%20Motorz!5e0!3m2!1sen!2seg!4v1778950369903!5m2!1sen!2seg"
+        width="100%"
+        height="180"
+        style={{ border: 0, borderRadius: '15px' }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+    >   
+    </iframe>
 
             </div>
 

@@ -4,6 +4,7 @@
     position: relative;
     overflow: hidden;
     margin-bottom: 80px;
+    /* margin-top: 10px; */
 }
 
 .contact-bg {
@@ -21,9 +22,9 @@
     margin: 0 auto;
 }
 
-.section-label {
+.section-label-0 {
     display: block;
-    font-size: 10px;
+    font-size: 14px;
     letter-spacing: 5px;
     color: #E61E25;
     font-weight: 700;
@@ -33,7 +34,7 @@
 .contact-main-title {
     font-size: 42px;
     font-weight: 200;
-    margin: 0;
+    /* margin: 0; */
 }
 
 .contact-main-title span {
@@ -51,6 +52,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    margin-top: 30px;
 }
 
 .glass-effect {

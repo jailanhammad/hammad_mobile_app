@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../supabase';
 import './cardetails.css';
+import { useTranslation } from 'react-i18next';
 
 const CarDetails = () => {
     const { id } = useParams();
     const [car, setCar] = useState(null);
-    const [lang] = useState('en'); 
+    
+    const { i18n } = useTranslation();
+    const lang = i18n.language || 'en'; 
 
     useEffect(() => {
         const fetchCarDetails = async () => {
@@ -22,7 +25,7 @@ const CarDetails = () => {
         fetchCarDetails();
     }, [id]);
 
-    if (!car) return <div className="loading">Loading...</div>;
+    if (!car) return <div className="loading">{lang === 'en' ? 'Loading...' : 'جاري التحميل...'}</div>;
 
     const t = (en, ar) => (lang === 'en' ? en : ar);
 
@@ -38,18 +41,18 @@ const CarDetails = () => {
                     <p>{car.year} • {t(car.type_en, car.type_ar)}</p>
                 </div>
                 <div className="car-price">
-                    <span className="price-tag">{car.price?.toLocaleString()}</span>
-                    <span className="monthly-tag">{t('or', 'أو')} {car.monthly_payment}/mo</span>
+                    <span className="price-tag">{car.price?.toLocaleString()} {t('EGP', 'جنيه')}</span>
+                    <span className="monthly-tag">{t('or', 'أو')} {car.monthly_payment?.toLocaleString()} {t('/mo', 'ج.م/شهر')}</span>
                 </div>
             </div>
 
             <div className="specs-grid-top">
                 <div className="spec-card">
-                    <span className="spec-value">{car.top_speed_mph} mph</span>
+                    <span className="spec-value">{car.top_speed_mph} {t('mph', 'كم/س')}</span>
                     <span className="spec-label">{t('Top Speed', 'السرعة القصوى')}</span>
                 </div>
                 <div className="spec-card">
-                    <span className="spec-value">{car.horsepower} HP</span>
+                    <span className="spec-value">{car.horsepower} {t('HP', 'حصان')}</span>
                     <span className="spec-label">{t('Power', 'القوة')}</span>
                 </div>
             </div>
@@ -72,6 +75,5 @@ const CarDetails = () => {
         </div>
     );
 };
-
 
 export default CarDetails;
