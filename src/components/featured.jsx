@@ -6,18 +6,23 @@ import { useTranslation } from 'react-i18next';
 
 const Featured = () => { 
   const [car, setCar] = useState(null);
-  
   const { i18n } = useTranslation();
   const currentLang = i18n.language || 'en';
 
   useEffect(() => {
     const fetchFeatured = async () => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from('featured_cars')
-        .select('*')
-        .single(); 
+        .select('*');
       
-      if (data) setCar(data);
+      if (error) {
+        console.error('Error fetching data:', error);
+        return;
+      }
+
+      if (data && data.length > 0) {
+        setCar(data[0]); 
+      }
     };
     fetchFeatured();
   }, []);
@@ -50,12 +55,15 @@ const Featured = () => {
           
           <div className="footer-row">
             <span className="price">
-              {isAr ? car.price_ar : car.price_en}
+              {isAr ? car.price_ar : car.price_en} 
+              <span style={{ fontSize: '0.6em', marginLeft: '5px' }}>
+                 {isAr ? 'ج.م' : 'EGP'}
+              </span>
             </span>
             
             <NavLink to="/carpage" className="brand-navlink" end>
               <div className="arrow-icon">
-                <span className="arrow-icon">{isAr ? '←' : '→'}</span>
+                <span>{isAr ? '←' : '→'}</span>
               </div>
             </NavLink>
           </div>
