@@ -3,7 +3,7 @@ import './header.css';
 import { FaRegBell, FaSearch } from 'react-icons/fa'; 
 import smallogo from '../assets/home/small-logo.svg';
 
-const Header = ({ userName = "Jailan" }) => {
+const Header = ({ userName = "User" }) => {
   return (
 
     <>
